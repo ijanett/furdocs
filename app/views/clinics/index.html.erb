@@ -1,0 +1,8 @@
+<h2>All Clinics</h2>
+<ul>
+    <% @clinics.each do |clinic| %>
+        <li><strong><%= clinic.name %></strong></li>
+        <p><%= clinic.location %></p>
+        <p><%= clinic.description %></p>
+    <% end %>
+</ul>
