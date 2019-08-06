@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :owners
 
   get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
   get '/auth/github/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
