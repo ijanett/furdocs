@@ -1,23 +1,23 @@
     MODELS
 Vet
-has_many :appointments
-has_many :pets, through: :appointments
+- has_many :appointments
+- has_many :pets, through: :appointments
 
 Pet
-belongs_to :owner
-has_many :records
-has_many :appointments
-has_many :vets, through: :appointments
+- belongs_to :owner
+- has_many :records
+- has_many :appointments
+- has_many :vets, through: :appointments
 
-Appointment
-belongs_to :vet
-belongs_to :pet
+- Appointment
+- belongs_to :vet
+- belongs_to :pet
 
-PetRecord
-belongs_to :pet
+Record
+- belongs_to :pet
 
 Owner
-has_many :pets
+- has_many :pets
 
 
     SCHEMA
