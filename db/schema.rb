@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_203933) do
+ActiveRecord::Schema.define(version: 2019_08_06_203755) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "vet_id"
@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 2019_08_06_203933) do
     t.integer "clinic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "uid"
     t.index ["clinic_id"], name: "index_vets_on_clinic_id"
   end
 
