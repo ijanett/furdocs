@@ -1,3 +1,4 @@
 class Chart < ApplicationRecord
-  belongs_to :appointment
+  belongs_to :vet
+  belongs_to :pet
 end
