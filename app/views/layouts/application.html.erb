@@ -10,6 +10,14 @@
   </head>
 
   <body>
+
+  <% flash.keys.each do |type| %>
+    <div data-alert class="flash <%= type %> alert-box radius">
+      <%= flash[type] %>
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div>
+  <% end %>
+
     <%= yield %>
   </body>
 </html>
