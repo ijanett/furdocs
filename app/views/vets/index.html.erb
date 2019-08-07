@@ -1,8 +1,9 @@
 <h2>Welcome to FurDocs!</h2>
-
-<%@vets.each do |vet|%>
-    <%= vet.full_dr_name %> - 
-    <%= vet.clinic.name %>
-<% end %>
+<ul>
+    <%@vets.each do |vet|%>
+        <li><%= vet.full_dr_name %> - 
+        <%= vet.clinic.name %></li>
+    <% end %>
+</ul>
 <br>
 <%= link_to "Logout", logout_path %>
