@@ -1,5 +1,6 @@
 <h2>Welcome to FurDocs!</h2>
 
 <%@vets.each do |vet|%>
-    <%= vet.first_name %>
+    <%= vet.full_dr_name %> - 
+    <%= vet.clinic.name %>
 <% end %>
