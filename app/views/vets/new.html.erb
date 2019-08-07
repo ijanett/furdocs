@@ -17,7 +17,7 @@
     <%= f.password_field :password_confirmation %>
     <br>
     <%= f.label "Clinic:"%>
-    <%= collection_select :clinic, :name, Clinic.all, :id, :name, {:prompt => "Please select your practice location"} %>
+    <%= collection_select :vet, :clinic_id, Clinic.all, :id, :name, {:prompt => "Please select your practice location"} %>
     <br><br>
 
     <%= f.submit "Register" %>
