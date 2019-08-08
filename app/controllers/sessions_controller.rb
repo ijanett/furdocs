@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     def destroy
         if current_vet || current_owner
             session.clear
-            redirect_to login_url
+            redirect_to root_url
         else
             redirect_to root_url
         end
