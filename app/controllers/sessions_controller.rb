@@ -7,8 +7,18 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if auth_hash = request.env["omniauth.auth"]
-            raish auth_hash.inspect
+        if auth_hash
+            
+            # grab first name
+            # auth_hash[:info][:name].split(" ").first
+            # grab last name
+            # auth_hash[:info][:name].split(" ").last
+            # grabs email
+            # auth_hash[:info][:email]
+            # grabs uid
+            # auth_hash[:uid]
+            # grabs provider
+            # auth_hash[:provider]
         else
             @vet = Vet.find_by(email: params[:session][:email])
             if @vet.authenticate(params[:session][:password])
@@ -28,5 +38,11 @@ class SessionsController < ApplicationController
         else
             redirect_to root_url
         end
+    end
+
+    private
+
+    def auth_hash
+        request.env["omniauth.auth"]
     end
 end
