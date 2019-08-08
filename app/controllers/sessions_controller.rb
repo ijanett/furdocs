@@ -8,21 +8,13 @@ class SessionsController < ApplicationController
 
     def create
         if auth_hash
-            
-            # grab first name
-            # auth_hash[:info][:name].split(" ").first
-            # grab last name
-            # auth_hash[:info][:name].split(" ").last
-            # grabs email
-            # auth_hash[:info][:email]
-            # grabs uid
-            # auth_hash[:uid]
-            # grabs provider
-            # auth_hash[:provider]
+            owner = Owner.find_or_create_with_oauth(auth_hash)
+            log_in(owner)
+            redirect_to owner_url(owner)
         else
-            @vet = Vet.find_by(email: params[:session][:email])
-            if @vet.authenticate(params[:session][:password])
-                log_in(@vet)
+            vet = Vet.find_by(email: params[:session][:email])
+            if vet.authenticate(params[:session][:password])
+                log_in(vet)
                 redirect_to vets_url
             else
                 flash[:notice] = "Invalid email or password. Please try again."
