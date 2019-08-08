@@ -3,8 +3,8 @@
 <p><strong>Name: </strong><%= @pet.name %></p>
 <p><strong>Color: </strong><%= @pet.color %></p>
 <p><strong>Breed: </strong><%= @pet.breed %></p>
-<p><strong>Birthdate: </strong><%= @pet.dob %></p>
-<p><strong>Gender: </strong><%= @pet.gender %></p>
+<p><strong>Birthdate: </strong><%= birthdate(@pet) %> (<%= @pet.age %>y/o)</p>
+<p><strong>Gender: </strong><%= @pet.gender.capitalize %></p>
 <br>
 
 <h3>Owner Contact</h3>
