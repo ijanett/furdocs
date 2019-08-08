@@ -1,0 +1,19 @@
+<%= form_for @chart do |f| %>
+    <%= f.hidden_field :vet_id %>
+    <%= label "Patient:"%>
+    <%= f.collection_select :pet_id, Pets.all, :id, :name, {:prompt => "Please choose a patient"} %>
+    <br>
+    <%= f.label "Check all that apply:"%>
+    <br>
+    <%= f.label :vaccination %>
+    <%= f.check_box :vaccination %>
+    <%= f.label :medication %>
+    <%= f.check_box :medication %>
+    <%= f.label :diagnosis %>
+    <%= f.check_box :diagnosis %>
+    <br>
+    <%= f.label "Notes:" %>
+    <%= f.text_area :notes %>
+    <br>
+    <%= f.submit "Submit" %>
+<% end %>

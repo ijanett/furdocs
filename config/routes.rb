@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   resources :pets, only: [:index, :show, :new, :create] do
     resources :appointments, only: [:index, :show, :new, :create]
+    resources :charts, only: [:show]
   end
   resources :owners, only: [:show] do
     resources :pets, only: [:index, :show, :new, :create]
