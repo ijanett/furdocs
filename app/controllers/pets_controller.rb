@@ -5,6 +5,7 @@ class PetsController < ApplicationController
     end
 
     def show
+        @pet = Pet.find(params[:id])
     end
 
     def new
@@ -15,7 +16,7 @@ class PetsController < ApplicationController
         @pet = Pet.new(pet_params)
 
         if @pet.valid?
-            redirect_to owner_pets_url(@pet.owner)
+            redirect_to owner_pet_url(@pet.owner)
         end
     end
 

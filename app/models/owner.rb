@@ -1,6 +1,10 @@
 class Owner < ApplicationRecord
     has_many :pets
 
+    def full_name
+        self.first_name + " " + self.last_name
+    end
+
     def self.find_or_create_with_oauth(auth)
         # first_or_initialize doesn't persist
         where(uid: auth.uid).first_or_initialize.tap do |o|
