@@ -1,0 +1,26 @@
+<h3>Enter your pet's info:</h3>
+
+<%= form_for @pet do |f| %>
+    
+    <%= f.label "Name:" %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label "Color:" %>
+    <%= f.text_field :color %>
+    <br>
+    <%= f.label "Breed:" %>
+    <%= f.text_field :breed %>
+    <br>
+    <%= f.label "Date of Birth:" %>
+    <%= f.date_field :dob %>
+    <br>
+    <%= f.label "Gender:" %>
+    <%= f.label "Male" %>
+    <%= f.radio_button :gender, "male" %>
+    <%= f.label "Female" %>
+    <%= f.radio_button :gender, "female" %>
+
+    <%= f.hidden_field :owner_id %>
+    <br><br>
+    <%= f.submit "Submit" %>
+<% end %>
