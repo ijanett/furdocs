@@ -1,4 +1,10 @@
 <h3>Hello <%= @owner.first_name %>!</h3>
+Your pets:
+    <ul>
+    <% @owner.pets.each do |pet| %>
+        <li><%= link_to pet.name, owner_pet_path(@owner, pet) %></li>
+    <% end %>
+    </ul>
 <br><br>
 <%= link_to "New Pet", new_owner_pet_path(@owner) %>
 <br><br>

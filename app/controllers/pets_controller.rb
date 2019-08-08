@@ -13,10 +13,9 @@ class PetsController < ApplicationController
     end
 
     def create
-        @pet = Pet.new(pet_params)
+        @pet = Pet.find_or_create_by(pet_params)
 
-        if @pet.valid?
-            @pet.save
+        if @pet.save
             redirect_to owner_pet_url(@pet.owner, @pet)
         end
     end
