@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    before_action :login_required, only: :destroy
 
     def welcome
     end
@@ -26,8 +27,6 @@ class SessionsController < ApplicationController
     def destroy
         if is_vet || current_owner
             session.clear
-            redirect_to root_url
-        else
             redirect_to root_url
         end
     end

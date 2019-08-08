@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+    before_action :login_required, only: :show, :new
 
     def show
         @appointment = Appointment.find(params[:id])

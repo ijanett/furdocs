@@ -1,5 +1,5 @@
 class VetsController < ApplicationController
-    before_action :login_required, only: :index
+    before_action :login_required, only: :index, :show
 
     def index
         @vets = Vet.all

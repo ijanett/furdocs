@@ -1,4 +1,5 @@
 class ChartsController < ApplicationController
+    before_action :login_required, only: :show, :new
 
     def show
     end
