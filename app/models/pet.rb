@@ -7,6 +7,7 @@ class Pet < ApplicationRecord
   enum gender: [ :male, :female ]
 
   def age
-    ((Time.zone.now - self.dob.to_time) / 1.year.seconds).floor
+    now = Time.current
+    now.year - self.dob.year - ((now.month > self.dob.month || (now.month == self.dob.month && now.day >= self.dob.day)) ? 0 : 1)
   end
 end
