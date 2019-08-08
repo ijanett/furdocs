@@ -10,4 +10,8 @@ class Pet < ApplicationRecord
     now = Time.current
     now.year - self.dob.year - ((now.month > self.dob.month || (now.month == self.dob.month && now.day >= self.dob.day)) ? 0 : 1)
   end
+
+  def self.all_owner_pets
+    where(owner_id == current_owner.id)
+  end
 end

@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   resources :clinics
   resources :charts
   resources :appointments
-  resources :vets
-  resources :pets, only: [:index, :show, :new, :create] do
+  resources :vets do
     resources :appointments, only: [:inde, :show, :new, :create]
   end
+  resources :pets, only: [:index, :show, :new, :create]
   resources :owners, only: [:show] do
     resources :pets, only: [:index, :show, :new, :create]
   end

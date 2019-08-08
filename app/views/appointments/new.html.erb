@@ -1,0 +1,12 @@
+<h3>Book your pet's appointment:</h3>
+
+<%= form_for @appointment do |f| %>
+    <%= f.hidden_field :vet_id %>
+    <%= f.label "Pet:" %>
+    <%= f.collection_select :appointment, :pet_id, Pet.all_owner_pets, :id, :name, {:prompt => "Please choose your pet"} %>
+    <%= f.label "Date:" %>
+    <%= f.date_field :date %>
+    <%= f.label "Time:" %>
+    <%= f.time_field :time %>
+    <%= f.submit "Submit" %>
+<% end %>

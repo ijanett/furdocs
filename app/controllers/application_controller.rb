@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
     def login_required
-        redirect_to login_url unless session.include? :user_id
+        redirect_to root_url unless session.include? :user_id
     end
 
     def log_in(user)

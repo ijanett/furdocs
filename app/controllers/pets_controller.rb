@@ -16,6 +16,7 @@ class PetsController < ApplicationController
         @pet = Pet.new(pet_params)
 
         if @pet.valid?
+            @pet.save
             redirect_to owner_pet_url(@pet.owner)
         end
     end
