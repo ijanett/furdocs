@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
 
     def show
+        @appointment = Appointment.find(params[:id])
     end
 
     def new
@@ -17,9 +18,9 @@ class AppointmentsController < ApplicationController
         if @appointment.valid?
             @appointment.save
             if is_vet
-                redirect_to vet_appointment(@appointment)
+                redirect_to vet_appointment_path(@appointment.vet, @appointment)
             elsif current_owner
-                redirect_to pet_appointment(@appointment)
+                redirect_to pet_appointment_path(@appointment.pet, @appointment)
             end
         end
     end

@@ -17,7 +17,7 @@ class PetsController < ApplicationController
 
         if @pet.valid?
             @pet.save
-            redirect_to owner_pet_url(@pet.owner)
+            redirect_to owner_pet_url(@pet.owner, @pet)
         end
     end
 
