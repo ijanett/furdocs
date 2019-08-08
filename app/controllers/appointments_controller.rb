@@ -1,7 +1,14 @@
 class AppointmentsController < ApplicationController
 
+    def show
+    end
+
     def new
-        @appointment = Appointment.new(vet_id: params[:vet_id])
+        if is_vet
+            @appointment = Appointment.new(vet_id: params[:vet_id])
+        else
+            @appointment = Appointment.new(pet_id: params[:pet_id])
+        end
     end
   
     def create
@@ -9,12 +16,17 @@ class AppointmentsController < ApplicationController
 
         if @appointment.valid?
             @appointment.save
-            redirect_to vet_appointment(@appointment)
+            if is_vet
+                redirect_to vet_appointment(@appointment)
+            elsif current_owner
+                redirect_to pet_appointment(@appointment)
+            end
+        end
     end
 
     private
 
     def appt_params
-        params.required(:appointment).permit(:vet_id, :vet_id, :date, :time)
+        params.required(:appointment).permit(:vet_id, :pet_id, :date, :time)
     end
 end

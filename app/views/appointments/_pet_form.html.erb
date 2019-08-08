@@ -1,0 +1,13 @@
+<%= form_for @appointment do |f| %>
+    <%= f.hidden_field :pet_id %>
+    <%= f.label "Choose a Vet:" %>
+    <%= f.collection_select :vet_id, Vet.all, :id, :full_dr_name, {:prompt => "Please choose a vet"} %>
+    <br>
+    <%= f.label "Date:" %>
+    <%= f.date_field :date %>
+    <br>
+    <%= f.label "Time:" %>
+    <%= f.time_field :time %>
+    <br><br>
+    <%= f.submit "Submit" %>
+<% end %>
