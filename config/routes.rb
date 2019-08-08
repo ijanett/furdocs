@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :charts
   resources :appointments
   resources :vets
-  resources :pets
+  resources :pets, only: [:index, :show, :new, :create] do
+    resources :appointments, only: [:inde, :show, :new, :create]
+  end
   resources :owners, only: [:show] do
     resources :pets, only: [:index, :show, :new, :create]
   end
