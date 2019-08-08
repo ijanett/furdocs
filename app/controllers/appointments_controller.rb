@@ -13,10 +13,9 @@ class AppointmentsController < ApplicationController
     end
   
     def create
-        @appointment = Appointment.new(appt_params)
+        @appointment = Appointment.find_or_create_by(appt_params)
 
-        if @appointment.valid?
-            @appointment.save
+        if @appointment.save
             if is_vet
                 redirect_to vet_appointment_path(@appointment.vet, @appointment)
             elsif current_owner
