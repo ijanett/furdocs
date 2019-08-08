@@ -1,1 +1,6 @@
-<p><%= @appointment.pet.name %>'s appointment has been scheduled for <%= appt_date(@appointment) %> at <%= appt_time(@appointment) %> with <%= @appointment.vet.full_dr_name %>!</p>
+<p><%= @appointment.pet.name %>'s appointment details:</p>
+<p><strong>Date: </strong> <%= appt_date(@appointment) %></p>
+<p><strong>Time: </strong> <%= appt_time(@appointment) %></p>
+<p><strong>Vet: </strong><%= @appointment.vet.full_dr_name %></p>
+<p><strong>Location: </strong>
+<%= link_to @appointment.vet.clinic.name, clinic_path(@appointment.vet.clinic) %></p>
