@@ -1,1 +1,1 @@
-<p><%= @appointment.pet.name %>'s appointment has been scheduled for <%= @appointment.date %> at <%= @appointment.time %> with <%= @appointment.vet.full_dr_name %>!</p>
+<p><%= @appointment.pet.name %>'s appointment has been scheduled for <%= appt_date(@appointment) %> at <%= appt_time(@appointment) %> with <%= @appointment.vet.full_dr_name %>!</p>
