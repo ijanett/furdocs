@@ -1,8 +1,15 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_owner, :is_vet
+    helper_method :current_owner, :is_vet, :login_required
+
+    def reset_session
+        @_request.reset_session
+    end
 
     def login_required
-        redirect_to root_url unless session.include? :user_id
+        # test = session.include? :user_id
+        if !session.include? :user_id || session[:user_id].nil?
+            redirect_to(root_url)
+        end
     end
 
     def log_in(user)

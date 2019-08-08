@@ -14,12 +14,12 @@ class SessionsController < ApplicationController
             redirect_to owner_url(owner)
         else
             vet = Vet.find_by(email: params[:session][:email])
-            if vet.authenticate(params[:session][:password])
-                log_in(vet)
-                redirect_to vet_url(vet)
-            else
+            if vet.nil?
                 flash[:notice] = "Invalid email or password. Please try again."
                 render :new
+            elsif vet.authenticate(password: params[:session][:password])
+                log_in(vet)
+                redirect_to vet_url(vet)  
             end
         end
     end
