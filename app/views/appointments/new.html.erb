@@ -1,7 +1,7 @@
 <% if is_vet %>
-    <h3>Book an appointment for you patient:</h3>
+    <h3>Book an appointment for your patient:</h3>
     <%= render 'vet_form' %>
 <% elsif current_owner %>
-    <h3>Book your pet's appointment:</h3>
+    <h3>Book <%=@appointment.pet.name %>'s appointment:</h3>
     <%= render 'pet_form' %>
 <%end%>

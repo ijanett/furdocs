@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
             vet = Vet.find_by(email: params[:session][:email])
             if vet.authenticate(params[:session][:password])
                 log_in(vet)
-                redirect_to vets_url
+                redirect_to vet_url(vet)
             else
                 flash[:notice] = "Invalid email or password. Please try again."
                 render :new
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        if current_vet || current_owner
+        if is_vet || current_owner
             session.clear
             redirect_to root_url
         else

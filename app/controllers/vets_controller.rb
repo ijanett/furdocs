@@ -5,6 +5,10 @@ class VetsController < ApplicationController
         @vets = Vet.all
     end
 
+    def show
+        @vet = Vet.find(params[:id])
+    end
+
     def new
         @vet = Vet.new
     end

@@ -6,18 +6,19 @@ class ApplicationController < ActionController::Base
     end
 
     def log_in(user)
-        session[:user_id] = user.id
+        if request.env["omniauth.auth"]
+            session[:user_id] = user.uid
+        else
+            session[:user_id] = user.id
+        end
     end
 
     def is_vet
         vet = Vet.find_by(id: session[:user_id])
-        if vet.nil?
-            current_owner
-        end
     end
 
     def current_owner
-        Owner.find_by(id: session[:user_id])
+        Owner.find_by(uid: session[:user_id])
     end
 
 end
