@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :appointments
   resources :vets
   resources :pets
-  resources :owners
+  resources :owners, only: [:show] do
+    resources :pets, only: [:index, :show, :new, :create]
+  end
 
   root 'sessions#welcome'
   get '/login', to: 'sessions#new'
