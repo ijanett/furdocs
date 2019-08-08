@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_013833) do
+ActiveRecord::Schema.define(version: 2019_08_06_153745) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "vet_id"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 2019_08_08_013833) do
   create_table "charts", force: :cascade do |t|
     t.integer "vet_id"
     t.integer "pet_id"
-    t.boolean "vaccination"
-    t.boolean "medication"
-    t.boolean "diagnosis"
+    t.boolean "vaccination", default: false
+    t.boolean "medication", default: false
+    t.boolean "diagnosis", default: false
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 2019_08_08_013833) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "uid"
     t.string "provider"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pets", force: :cascade do |t|

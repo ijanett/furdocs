@@ -5,7 +5,7 @@ class CreatePets < ActiveRecord::Migration[5.2]
       t.string :color
       t.string :breed
       t.date :dob
-      t.string :sex
+      t.integer :gender
       t.references :owner, foreign_key: true
 
       t.timestamps
