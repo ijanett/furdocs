@@ -7,6 +7,24 @@
     margin-bottom: 40px;
 }
 
+#menubar-logo img {
+    margin-top: 10px;
+    margin-bottom: 2px;
+    margin-right: 10px;
+}
+
+#welcome-msg img {
+    position: relative;
+    margin-bottom: 2px;
+}
+
+#welcome-msg h2 {
+    font-family: 'Playfair Display', serif;
+    position: absolute;
+    color: #379ea9;
+    margin-left: 90px;
+}
+
 #error_explanation {
     position: relative;
     padding: 10px;
@@ -28,4 +46,13 @@
     top: 100px;
     color: red;
     font-weight: bold;
+}
+
+p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
 }
