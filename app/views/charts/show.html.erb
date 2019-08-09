@@ -1,17 +1,20 @@
-<table>
-        <tr>
-            <th colspan="3">Medical Chart for <%= @chart.pet.name %></th>
-        </tr>
-        <tr>
-            <td>Vaccination</td>
-            <td>Medication</td>
-            <td>Diagnosis</td>
-        </tr>
-        <tr>
-            <td><%= vacc_if_true(@chart) %></td>
-            <td><%= med_if_true(@chart) %></td>
-            <td><%= diag_if_true(@chart) %></td>
-        </tr>
+<h3>Medical Card for <%= @chart.pet.name %></h3>
+<table class="table">
+  <caption>Reviewed by <%= @chart.vet.full_dr_name %></caption>
+  <thead>
+    <tr>
+      <th scope="col">Vaccination</th>
+      <th scope="col">Medication</th>
+      <th scope="col">Diagnosis</th>
+      <th scope="col">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= vacc_if_true(@chart) %></td>
+      <td><%= med_if_true(@chart) %></td>
+      <td><%= diag_if_true(@chart) %></td>
+      <td><%= @chart.note %></td>
+    </tr>
+  </tbody>
 </table>
-<p><strong>Notes:</strong></p>
-<p><%= @chart.note %></p>

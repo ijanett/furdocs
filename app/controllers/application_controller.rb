@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :current_owner, :is_vet, :login_required
 
-    def reset_session
-        @_request.reset_session
-    end
-
     def login_required
         # test = session.include? :user_id
         if !session.include? :user_id || session[:user_id].nil?
