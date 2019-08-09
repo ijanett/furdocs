@@ -21,7 +21,7 @@ class VetsController < ApplicationController
         if @vet.valid?
             @vet.save
             log_in(@vet)
-            redirect_to vets_url
+            redirect_to vet_url(@vet)
         else
             flash[:notice] = "Something went wrong. Please enter valid info."
             render :new

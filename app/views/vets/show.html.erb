@@ -1,4 +1,6 @@
 <h3>Hello, <%= @vet.full_dr_name %></h3>
+<p><%= @vet.appointment_count %></p>
+<% if !@vet.appointments.empty? %>
 <table>
         <tr>
             <th colspan="<%= @vet.appointments.count %>">Your Upcoming Appointments</th>
@@ -17,8 +19,11 @@
         </tr>
     <% end %>
 </table>
+<% else %>
+    <p>Make a new appointment below.</p>
+<% end %>
 <br>
-<%= link_to "New appointment", new_vet_appointment_path(@vet) %>
+<%= link_to "New Appointment", new_vet_appointment_path(@vet) %>
 <br><br>
 <%= link_to "New Chart", new_vet_chart_path(@vet) %>
 <br><br>

@@ -1,5 +1,5 @@
 <h3>Hello <%= @owner.first_name %>!</h3>
-Your pets:
+<p>Submit your pet's information with the 'new pet' form below to make and keep track of appointments and medical records.</p>
     <ul>
     <% @owner.pets.each do |pet| %>
         <li><%= link_to pet.name, owner_pet_path(@owner, pet) %></li>

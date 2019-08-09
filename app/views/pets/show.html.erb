@@ -11,5 +11,5 @@
 <p><strong>Full Name: </strong><%= @pet.owner.full_name %></p>
 <p><strong>Email: </strong><%= @pet.owner.email %></p>
 <br><br>
-
+<p>Back to <%= link_to "my profile", owner_path(@pet.owner) %></p>
 <p><strong>Make a new <%= link_to "appointment", new_pet_appointment_path(@pet) %> </strong></p>

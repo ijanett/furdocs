@@ -5,6 +5,21 @@ class Owner < ApplicationRecord
         self.first_name + " " + self.last_name
     end
 
+    def pets_count
+        "You have " + self.pets.count.to_s + " pets."
+    end
+
+    def pets_order_by_age
+        self.pets.order('age DESC')
+    end
+
+    # def puppies
+    #     self.pets_order_by_age.where("age < 1")
+    # end
+
+    # def adult_dogs
+    # end
+
     def self.find_or_create_with_oauth(auth)
         # first_or_initialize doesn't persist
         where(uid: auth.uid).first_or_initialize.tap do |o|
