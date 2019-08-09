@@ -1,8 +1,11 @@
 <h2>All Clinics</h2>
 <ul>
     <% @clinics.each do |clinic| %>
-        <li><strong><%= clinic.name %></strong></li>
-        <p><%= clinic.location %></p>
-        <p><%= clinic.description %></p>
+    <div class="list-group">
+        <a href="/clinics/<%= clinic.id %>" class="list-group-item">
+            <strong><%= clinic.name %></strong>
+                <p><%= clinic.location %></p>
+        </a>
+    </div>
     <% end %>
 </ul>

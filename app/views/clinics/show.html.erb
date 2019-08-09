@@ -1,0 +1,11 @@
+<h2><%= @clinic.name %></h2>
+<p><%= @clinic.location %></p>
+<p><%= @clinic.description %></p>
+
+<h3>Vets at this location:</h3>
+
+<% @clinic.vets.each do |vet| %>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= vet.full_dr_name %></li>
+    </ul>
+<% end %>
