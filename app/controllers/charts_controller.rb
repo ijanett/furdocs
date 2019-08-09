@@ -1,7 +1,8 @@
 class ChartsController < ApplicationController
-    before_action :login_required, only: :show, :new
+    before_action :login_required, only: [:show, :new]
 
     def show
+        @chart = Chart.find(params[:id])
     end
 
     def new
@@ -15,5 +16,11 @@ class ChartsController < ApplicationController
         else
             render :new
         end
+    end
+
+    private
+
+    def chart_params
+        params.require(:chart).permit(:vet_id, :pet_id, :vaccination, :medication, :diagnosis, :note)
     end
 end

@@ -1,0 +1,17 @@
+<table>
+        <tr>
+            <th colspan="3">Medical Chart for <%= @chart.pet.name %></th>
+        </tr>
+        <tr>
+            <td>Vaccination</td>
+            <td>Medication</td>
+            <td>Diagnosis</td>
+        </tr>
+        <tr>
+            <td><%= vacc_if_true(@chart) %></td>
+            <td><%= med_if_true(@chart) %></td>
+            <td><%= diag_if_true(@chart) %></td>
+        </tr>
+</table>
+<p><strong>Notes:</strong></p>
+<p><%= @chart.note %></p>
