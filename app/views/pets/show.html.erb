@@ -3,7 +3,7 @@
 <p><strong>Name: </strong><%= @pet.name %></p>
 <p><strong>Color: </strong><%= @pet.color %></p>
 <p><strong>Breed: </strong><%= @pet.breed %></p>
-<p><strong>Birthdate: </strong><%= birthdate(@pet) %> (<%= @pet.age_years %>y/o <%= @pet.age_months %>)</p>
+<p><strong>Birthdate: </strong><%= birthdate(@pet) %> (<%if @pet.age_years > 0 %><%= @pet.age_years %>y/o <% else %><%= @pet.age_months%>m/o<% end %>)</p>
 <p><strong>Gender: </strong><%= @pet.gender.capitalize %></p>
 <br>
 
