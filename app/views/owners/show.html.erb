@@ -1,11 +1,12 @@
 <h3>Hello <%= @owner.first_name %>!</h3>
 <p>Submit your pet's information with the 'new pet' form below to make and keep track of appointments and medical records.</p>
-    <ul>
+
     <% @owner.pets.each do |pet| %>
-        <li><%= link_to pet.name, owner_pet_path(@owner, pet) %></li>
+        <div class="list-group">
+            <a href="/owners/<%= pet.owner_id %>/pets/<%= pet.id %>" class="list-group-item list-group-item-action active">
+                <%= pet.name %>
+            </a>
+        </div>
     <% end %>
-    </ul>
 <br><br>
 <%= link_to "New Pet", new_owner_pet_path(@owner) %>
-<br><br>
-<%= link_to "Log Out", logout_path %>

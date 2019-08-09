@@ -16,6 +16,10 @@ class Vet < ApplicationRecord
         "Dr. " + self.full_name
     end
 
+    def dr_last_name
+        "Dr. " + self.last_name
+    end
+
     def appointment_count
         "You have " + self.appointments.count.to_s + " upcoming appointments."
     end

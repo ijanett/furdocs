@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_owner, :is_vet, :login_required
+    helper_method :current_owner, :is_vet, :login_required, :logged_out
+
+    def logged_out
+        !session.include? :user_id || session[:user_id].nil?
+    end
 
     def login_required
         # test = session.include? :user_id
-        if !session.include? :user_id || session[:user_id].nil?
+        if logged_out
             redirect_to(root_url)
         end
     end

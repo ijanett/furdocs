@@ -19,7 +19,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-      <% if login_required %>
+      <% if logged_out %>
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -31,7 +31,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <a class="nav-link" href="/<%if is_vet%>vets/<%= is_vet.id %><%else%>owners/<%= current_user.id %><%end%>">Home</a>
+          <a class="nav-link" href="/<%if is_vet%>vets/<%= is_vet.id %><%else%>owners/<%= current_owner.id %><%end%>">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
