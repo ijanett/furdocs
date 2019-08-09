@@ -7,6 +7,7 @@ class Vet < ApplicationRecord
     
     validates :email, presence: true, uniqueness: true, format: { with: /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i }
     validates :password, presence: true, confirmation: true, length: { minimum: 6 }
+    validates_presence_of :first_name, :last_name, :clinic_id
 
     def full_name
         self.first_name.capitalize + " " + self.last_name.capitalize

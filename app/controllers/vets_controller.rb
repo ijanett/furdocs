@@ -14,16 +14,13 @@ class VetsController < ApplicationController
     end
 
     def create
-        @vet = Vet.new
+        @vet = Vet.create(vet_params)
 
-        @vet.attributes = vet_params
         # byebug
-        if @vet.valid?
-            @vet.save
+        if @vet.save
             log_in(@vet)
             redirect_to vet_url(@vet)
         else
-            flash[:notice] = "Something went wrong. Please enter valid info."
             render :new
         end
     end
