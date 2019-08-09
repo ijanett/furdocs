@@ -1,9 +1,5 @@
 class PetsController < ApplicationController
-    before_action :login_required, only: [:index, :show, :new]
-
-    def index
-        @pets = Pet.all.where(owner_id: params[:owner_id])
-    end
+    before_action :login_required, only: [:show, :new]
 
     def show
         @pet = Pet.find(params[:id])

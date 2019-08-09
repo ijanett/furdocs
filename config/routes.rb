@@ -6,12 +6,12 @@ Rails.application.routes.draw do
     resources :appointments, only: [:index, :show, :new, :create]
     resources :charts, only: [:show, :new, :create]
   end
-  resources :pets, only: [:index, :show, :new, :create] do
+  resources :pets, only: [:show, :new, :create] do
     resources :appointments, only: [:index, :show, :new, :create]
     resources :charts, only: [:show]
   end
   resources :owners, only: [:show] do
-    resources :pets, only: [:index, :show, :new, :create]
+    resources :pets, only: [:show, :new, :create]
   end
 
   root 'sessions#welcome'

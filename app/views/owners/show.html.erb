@@ -3,7 +3,7 @@
 
     <% @owner.pets.each do |pet| %>
         <div class="list-group">
-            <a href="/owners/<%= pet.owner_id %>/pets/<%= pet.id %>" class="list-group-item list-group-item-action active">
+            <a href="/owners/<%= pet.owner_id %>/pets/<%= pet.id %>" class="list-group-item">
                 <%= pet.name %>
             </a>
         </div>
