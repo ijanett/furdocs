@@ -1,3 +1,19 @@
+<% if @chart.errors.any? %>
+   <div id="error_explanation">
+     <h4>
+       <%= pluralize(@chart.errors.count, "error") %>
+       prohibited this post from being saved:
+     </h4>
+     <ul>
+     <% @chart.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+     <div id="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+   </div>
+ <% end %>
+
+
 <h3>New Chart</h3>
 <%= form_for @chart do |f| %>
     <%= f.hidden_field :vet_id %>
