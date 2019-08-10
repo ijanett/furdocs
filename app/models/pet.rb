@@ -6,6 +6,8 @@ class Pet < ApplicationRecord
 
   enum gender: [ :male, :female ]
 
+  validates_presence_of :name, :breed, :color, :dob, :gender
+
   def age_years
     now = Time.current
     now.year - self.dob.year - ((now.month > self.dob.month || (now.month == self.dob.month && now.day >= self.dob.day)) ? 0 : 1)

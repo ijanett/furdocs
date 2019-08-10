@@ -14,6 +14,8 @@ class PetsController < ApplicationController
 
         if @pet.save
             redirect_to owner_pet_url(@pet.owner, @pet)
+        else
+            render :new
         end
     end
 
