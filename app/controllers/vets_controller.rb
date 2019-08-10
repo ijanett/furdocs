@@ -1,9 +1,5 @@
 class VetsController < ApplicationController
-    before_action :login_required, only: [:index, :show]
-
-    def index
-        @vets = Vet.all
-    end
+    before_action :login_required, only: :show
 
     def show
         @vet = Vet.find(params[:id])
