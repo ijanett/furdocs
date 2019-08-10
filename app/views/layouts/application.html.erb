@@ -18,54 +18,59 @@
           <img src="/assets/furdocs_logo_icon.png" alt="furdocslogo.png">
         </div>
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <% if logged_out %>
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link" href="/login">For Vets</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/github">Login with GitHub</a>
-        </li>
-        
-      <% else %>
-        <li class="nav-item">
-          <a class="nav-link" href="/<%if is_vet%>vets/<%= is_vet.id %><%else%>owners/<%= current_owner.id %><%end%>">Home</a>
-        </li>
-        <% if is_vet %>
-          <li class="nav-item">
-            <a class="nav-link" href="/vets/<%= is_vet.id %>/appointments/new">New Appointment</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/vets/<%= is_vet.id %>/charts/new">New Chart</a>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <a class="nav-link" href="/owners/<%= current_owner.id %>/pets/new">New Pet</a>
-          </li>
+      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+        <% if logged_out %>
             <li class="nav-item">
-            <a class="nav-link" href="/clinics">Clinics</a>
-          </li>
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/github">Login with GitHub</a>
+            </li>
+        <% else %>
+            <li class="nav-item">
+                <a class="nav-link" href="/<%if is_vet%>vets/<%= is_vet.id %><%else%>owners/<%= current_owner.id %><%end%>">Home</a>
+            </li>
+
+            <% if is_vet %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/vets/<%= is_vet.id %>/appointments/new">New Appointment</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/vets/<%= is_vet.id %>/charts/new">New Chart</a>
+                </li>
+            <% else %>
+                <li class="nav-item">
+                <a class="nav-link" href="/owners/<%= current_owner.id %>/pets/new">New Pet</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/clinics">Clinics</a>
+                </li>
+            <% end %>
         <% end %>
-        </li>
-      
-      </ul>
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
-      </ul>
-      <% end %>
+        </ul>
     </div>
-  </nav>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto">FurDocs</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <% if logged_out %>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">For Vets</a>
+            </li>
+    <% else %>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    <% end %>
+    </div>
+</nav>
+
 
   <div class="container">
     <div class="row justify-content-md-center">

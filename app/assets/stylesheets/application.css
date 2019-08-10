@@ -25,6 +25,7 @@ a:hover {
 .navbar {
     margin-left: 5px;
     margin-bottom: 40px;
+    list-style-type: none;
 }
 
 #menubar-logo img {
@@ -78,3 +79,4 @@ p {
 body {
     font-family: 'Playfair Display', serif;
 }
+
