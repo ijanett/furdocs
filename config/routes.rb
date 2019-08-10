@@ -1,20 +1,23 @@
 Rails.application.routes.draw do
+
+  root 'sessions#welcome'
+
   resources :clinics, only: [:index, :show]
-  resources :charts
-  resources :appointments
+
   resources :vets do
     resources :appointments, only: [:index, :show, :new, :create]
     resources :charts, only: [:show, :new, :create]
   end
+
   resources :pets, only: [:show, :new, :create] do
     resources :appointments, only: [:index, :show, :new, :create]
     resources :charts, only: [:show]
   end
+
   resources :owners, only: [:show] do
     resources :pets, only: [:show, :new, :create]
   end
-
-  root 'sessions#welcome'
+  
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/auth/github/callback', to: 'sessions#create'

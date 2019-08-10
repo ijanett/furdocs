@@ -23,25 +23,25 @@ a:hover {
 }
 
 .navbar {
+    margin-left: 5px;
     margin-bottom: 40px;
 }
 
 #menubar-logo img {
-    margin-top: 10px;
-    margin-bottom: 2px;
-    margin-right: 10px;
+    margin-right: 2px;
 }
 
 #welcome-msg img {
     position: relative;
-    margin-bottom: 2px;
+    margin-top: 2px;
 }
 
 #welcome-msg h2 {
     font-family: 'Playfair Display', serif;
     position: absolute;
     color: #379ea9;
-    margin-left: 90px;
+    bottom: 90px;
+    right: 90px;
 }
 
 #error_explanation {

@@ -44,7 +44,7 @@
       <td align="center"><%= vacc_if_true(chart) %></td>
       <td align="center"><%= med_if_true(chart) %></td>
       <td align="center"><%= diag_if_true(chart) %></td>
-      <td><%= chart.note %></td>
+      <td><%if is_vet %><%= link_to chart.note, vet_chart_path(is_vet, chart) %><%else%><%= link_to chart.note, pet_chart_path(@pet, chart) %><%end%></td>
     </tr>
     <% end %>
   </tbody>
