@@ -22,17 +22,20 @@
     <span class="navbar-toggler-icon"></span>
   </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul class="navbar-nav mr-auto">
       <% if logged_out %>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="/login">For Vets</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/auth/github">Login with GitHub</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">For Vets</a>
-        </li>
+        
       <% else %>
         <li class="nav-item">
           <a class="nav-link" href="/<%if is_vet%>vets/<%= is_vet.id %><%else%>owners/<%= current_owner.id %><%end%>">Home</a>

@@ -40,8 +40,11 @@ a:hover {
     font-family: 'Playfair Display', serif;
     position: absolute;
     color: #379ea9;
-    bottom: 90px;
-    right: 90px;
+    bottom: 50px;
+    text-align: center;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 #error_explanation {
