@@ -1,6 +1,8 @@
 <h3>Hello <%= @owner.first_name %>!</h3>
+<% if @owner.pets.empty? %>
 <p>Submit your pet's information with the 'new pet' form in the menu dropbox to make and keep track of appointments and medical records.</p>
-
+<% else %>
+<p><%= @owner.pets_count %></p>
     <% @owner.pets.each do |pet| %>
         <div class="list-group">
             <a href="/owners/<%= pet.owner_id %>/pets/<%= pet.id %>" class="list-group-item">
@@ -8,3 +10,4 @@
             </a>
         </div>
     <% end %>
+<% end %>

@@ -13,13 +13,6 @@ class Owner < ApplicationRecord
         self.pets.order('age DESC')
     end
 
-    # def puppies
-    #     self.pets_order_by_age.where("age < 1")
-    # end
-
-    # def adult_dogs
-    # end
-
     def self.find_or_create_with_oauth(auth)
         # first_or_initialize doesn't persist
         where(uid: auth.uid).first_or_initialize.tap do |o|
