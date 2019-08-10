@@ -22,6 +22,8 @@ class AppointmentsController < ApplicationController
             elsif current_owner
                 redirect_to pet_appointment_path(@appointment.pet, @appointment)
             end
+        else
+            render :new
         end
     end
 

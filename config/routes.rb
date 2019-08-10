@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :clinics, only: [:index, :show]
 
+  resources :appointments, only: [:new, :create]
+
   resources :vets do
     resources :appointments, only: [:index, :show, :new, :create]
     resources :charts, only: [:show, :new, :create]

@@ -50,8 +50,8 @@ a:hover {
     background-color: white;
     border-radius:.7em;
     border: 2px solid;
-    border-color: red;
-    color: red;
+    border-color: rgb(238, 74, 99);
+    color: rgb(238, 74, 99);
     margin-top: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -61,9 +61,9 @@ a:hover {
 
 .closebtn {
     position: absolute;
-    right: 100px;
-    top: 100px;
-    color: red;
+    right: 10px;
+    top: 10px;
+    color: rgb(238, 74, 99);
     font-weight: bold;
 }
 

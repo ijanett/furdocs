@@ -1,3 +1,18 @@
+<% if @appointment.errors.any? %>
+   <div id="error_explanation">
+     <h4>
+       <%= pluralize(@appointment.errors.count, "error") %>
+       prohibited this post from being saved:
+     </h4>
+     <ul>
+     <% @appointment.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+     <div id="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+   </div>
+ <% end %>
+
 <% if is_vet %>
     <h3>Book an appointment for your patient:</h3>
     <%= render 'vet_form' %>
