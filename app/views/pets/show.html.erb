@@ -55,6 +55,6 @@
 <p><strong>Full Name: </strong><%= @pet.owner.full_name %></p>
 <p><strong>Email: </strong><%= @pet.owner.email %></p>
 <br><br>
-
-<p><strong>Make a new <%= link_to "appointment", new_pet_appointment_path(@pet) %> </strong></p>
-
+<% if current_owner %>
+    <p><strong>Make a new <%= link_to "appointment", new_pet_appointment_path(@pet) %> </strong></p>
+<% end %>

@@ -1,29 +1,26 @@
 <h3>Hello, <%= @vet.dr_last_name %></h3>
 <p><%= @vet.appointment_count %></p>
 <% if !@vet.appointments.empty? %>
-<table>
-        <tr>
-            <th colspan="<%= @vet.appointments.count %>">Your Upcoming Appointments</th>
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Appointment Details</th>
         </tr>
+        </thead>
         <tr>
-            <td>Patient</td>
-            <td>Date</td>
-            <td>Time</td>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Time</th>
         </tr>
         <% @vet.appointments.each do |appt| %>
         
         <tr>
-            <td><%= appt.pet.name %></td>
+            <td><%= link_to appt.pet.name, pet_path(appt.pet) %></td>
             <td><%= appt_date(appt) %></td>
             <td><%= appt_time(appt) %></td>
         </tr>
     <% end %>
 </table>
 <% else %>
-    <p>Make a new appointment below.</p>
+    <p>Find the new appointment and chart forms in the menu.</p>
 <% end %>
-<br>
-<%= link_to "New Appointment", new_vet_appointment_path(@vet) %>
-<br><br>
-<%= link_to "New Chart", new_vet_chart_path(@vet) %>
-<br><br>

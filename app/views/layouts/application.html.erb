@@ -44,6 +44,8 @@
           <%if is_vet %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="vets/<%= is_vet.id %>/appointments/new">New Appointment</a>
+            <a class="dropdown-item" href="/vets/<%= is_vet.id %>/charts/new">New Chart</a>
+          </div>
           <%else%>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Action</a>
