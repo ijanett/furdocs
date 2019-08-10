@@ -13,7 +13,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand">
         <div id="menubar-logo">
           <img src="/assets/furdocs_logo_icon.png" alt="furdocslogo.png">
         </div>
@@ -41,12 +41,17 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Menu
           </a>
+          <%if is_vet %>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="vets/<%= is_vet.id %>/appointments/new">New Appointment</a>
+          <%else%>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="/owners/<%= current_owner.id %>/pets/new">New Pet</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/clinics">Clinics</a>
           </div>
+          <%end%>
         </li>
       <% end %>
       </ul>
@@ -55,7 +60,7 @@
 
   <div class="container">
     <div class="row justify-content-md-center">
-      <div class="col col-lg-8">
+      <div class="col col-sm-8 content-center">
         <%= yield %>
       </div>
   </div>

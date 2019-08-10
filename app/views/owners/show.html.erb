@@ -1,5 +1,5 @@
 <h3>Hello <%= @owner.first_name %>!</h3>
-<p>Submit your pet's information with the 'new pet' form below to make and keep track of appointments and medical records.</p>
+<p>Submit your pet's information with the 'new pet' form in the menu dropbox to make and keep track of appointments and medical records.</p>
 
     <% @owner.pets.each do |pet| %>
         <div class="list-group">
@@ -8,5 +8,3 @@
             </a>
         </div>
     <% end %>
-<br><br>
-<%= link_to "New Pet", new_owner_pet_path(@owner) %>
