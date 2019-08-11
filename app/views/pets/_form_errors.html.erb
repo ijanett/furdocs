@@ -1,0 +1,14 @@
+<% if @pet.errors.any? %>
+   <div id="error_explanation">
+     <h4>
+       <%= pluralize(@pet.errors.count, "error") %>
+       prohibited this post from being saved:
+     </h4>
+     <ul>
+     <% @pet.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+     <div id="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+   </div>
+ <% end %>
