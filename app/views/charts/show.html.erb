@@ -11,10 +11,14 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= vacc_if_true(@chart) %></td>
-      <td><%= med_if_true(@chart) %></td>
-      <td><%= diag_if_true(@chart) %></td>
+      <td align="center"><%= vacc_if_true(@chart) %></td>
+      <td align="center"><%= med_if_true(@chart) %></td>
+      <td align="center"><%= diag_if_true(@chart) %></td>
       <td><%= @chart.note %></td>
     </tr>
   </tbody>
 </table>
+
+<% if is_vet %>
+  <%= link_to "Edit Chart", edit_vet_chart_path(@chart.vet, @chart) %>
+<% end %>

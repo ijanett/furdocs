@@ -1,23 +1,4 @@
 <%= render 'form_errors'%>
 
 <h3>New Chart</h3>
-<%= form_for @chart do |f| %>
-    <%= f.hidden_field :vet_id %>
-    <%= f.label "Patient:"%>
-    <%= f.collection_select :pet_id, Pet.all, :id, :name, {:prompt => "Please choose a patient"} %>
-    <br><br>
-    <%= f.label "Check all that apply:"%>
-    <br>
-    <%= f.label :vaccination %>
-    <%= f.check_box :vaccination %>
-    <%= f.label :medication %>
-    <%= f.check_box :medication %>
-    <%= f.label :diagnosis %>
-    <%= f.check_box :diagnosis %>
-    <br><br>
-    <%= f.label "Notes:" %>
-    <br>
-    <%= f.text_area :note %>
-    <br>
-    <%= f.submit "Submit" %>
-<% end %>
+<%= render :partial => 'form', :locals => {chart: @chart, submit_text: "Submit"} %>

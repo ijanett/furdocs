@@ -4,11 +4,11 @@ Rails.application.routes.draw do
 
   resources :clinics, only: [:index, :show]
   resources :appointments, only: [:show, :new, :create]
-  resources :charts, only: [:new, :create]
+  resources :charts, only: [:new, :create, :edit, :update]
 
   resources :vets, only: [:show, :new, :create] do
     resources :appointments, only: [:show, :new, :create]
-    resources :charts, only: [:show, :new, :create]
+    resources :charts, only: [:show, :new, :create, :edit]
   end
 
   resources :pets, only: [:show, :new, :create] do

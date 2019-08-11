@@ -1,8 +1,8 @@
 class ChartsController < ApplicationController
-    before_action :login_required, only: [:show, :new]
+    before_action :login_required, only: [:show, :new, :edit]
+    before_action :set_chart, only: [:show, :edit, :update]
 
     def show
-        @chart = Chart.find(params[:id])
     end
 
     def new
@@ -18,9 +18,24 @@ class ChartsController < ApplicationController
         end
     end
 
+    def edit
+    end
+
+    def update
+        if @chart.update(chart_params)
+            redirect_to vet_chart_url(@chart.vet, @chart)
+        else
+            render :edit
+        end
+    end
+
     private
 
     def chart_params
         params.require(:chart).permit(:vet_id, :pet_id, :vaccination, :medication, :diagnosis, :note)
+    end
+
+    def set_chart
+        @chart = Chart.find(params[:id])
     end
 end
