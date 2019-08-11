@@ -75,7 +75,16 @@
   <div class="container">
     <div class="row justify-content-md-center">
       <div class="col col-lg-8 content-center">
+
+      <% flash.keys.each do |type| %>
+        <div data-alert class="flash <%= type %> alert-box radius">
+          <%= flash[type] %>
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+      <% end %>
+
         <%= yield %>
+        
       </div>
   </div>
   </body>

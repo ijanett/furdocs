@@ -63,10 +63,17 @@ a:hover {
     height: auto;
 }
 
+.flash {
+    position: relative;
+    border-radius:.7em;
+    border: 2px solid;
+    color: rgb(238, 74, 99);
+}
+
 .closebtn {
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 2px;
     color: rgb(238, 74, 99);
     font-weight: bold;
 }
