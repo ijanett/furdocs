@@ -1,18 +1,4 @@
-<h2>Vet Registration Form</h2>
-<% if @vet.errors.any? %>
-   <div id="error_explanation">
-     <h4>
-       <%= pluralize(@vet.errors.count, "error") %>
-       prohibited this post from being saved:
-     </h4>
-     <ul>
-     <% @vet.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-     <% end %>
-     </ul>
-     <div id="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
-   </div>
- <% end %>
+<%= render 'form_errors' %>
 
 <%= form_for @vet do |f| %>
     <%= f.label "First Name:" %>
