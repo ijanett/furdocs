@@ -1,0 +1,21 @@
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Appointment Details</th>
+    </tr>
+  </thead>
+        <tr>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+        <% vet_upcoming_appts(@vet).each do |appt| %>
+        
+        <tr>
+            <td><%= link_to appt.pet.name, pet_path(appt.pet) %></td>
+            <td><%= appt_date(appt) %></td>
+            <td><%= appt_time(appt) %></td>
+        </tr>
+    <% end %>
+</table>
+<br><br>

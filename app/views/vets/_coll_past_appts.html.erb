@@ -1,0 +1,37 @@
+<div class="accordion" id="accordionExample">
+    <div class="card">
+    <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            See your past appointments
+        </button>
+        </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+        
+        <table class="table table-borderless">
+            <thead>
+            <tr>
+            <th scope="col">Appointment Details</th>
+            </tr>
+            </thead>
+            <tr>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+
+            <% vet_past_appts(@vet).each do |appt| %>
+            <tr>
+                <td><%= link_to appt.pet.name, pet_path(appt.pet) %></td>
+                <td><%= appt_date(appt) %></td>
+                <td><%= appt_time(appt) %></td>
+            </tr>
+            <% end %>
+        </table>
+        </div>
+    </div>
+    </div>
+</div>
