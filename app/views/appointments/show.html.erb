@@ -4,7 +4,7 @@
 <% if current_owner %>
     <p><strong>Vet: </strong><%= @appointment.vet.full_dr_name %></p>
     <p><strong>Location: </strong>
-    <%= link_to @appointment.vet_clinic.name, clinic_path(@appointment.vet_clinic) %></p>
+    <%= link_to vet_clinic(@appointment).name, clinic_path(vet_clinic(@appointment)) %></p>
     <br>
     Back to <%= link_to @appointment.pet.name, owner_pet_path(@appointment.pet.owner, @appointment.pet) %>'s profile page.
 <% end %>
