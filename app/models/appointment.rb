@@ -20,4 +20,12 @@ class Appointment < ApplicationRecord
   def self.past_appts_for(vet)
     self.past_appts.where('appointments.vet_id == ?', vet.id)
   end
+
+  def self.upcoming_appts_for(pet)
+    self.upcoming_appts.where('appointments.pet_id == ?', pet.id)
+  end
+
+  def self.past_appts_for(pet)
+    self.past_appts.where('appointments.pet_id == ?', pet.id)
+  end
 end
