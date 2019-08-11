@@ -27,7 +27,7 @@
   </tbody>
 </table>
 <br>
-
+<% if !Appointment.upcoming_appts_for(@pet).empty? %>
 <h3>Upcoming Appointments</h3>
 <table class="table table-borderless">
   <thead>
@@ -48,7 +48,9 @@
   </tbody>
 </table>
 <br>
+<% end %>
 
+<% if !@pet.charts.empty? %>
 <h3>Medical Chart</h3>
 <table class="table table-borderless">
   <thead>
@@ -71,6 +73,7 @@
   </tbody>
 </table>
 <br>
+<% end %>
 
 <h3>Owner Contact</h3>
 <p><strong>Full Name: </strong><%= @pet.owner.full_name %></p>
