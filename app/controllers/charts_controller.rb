@@ -1,6 +1,6 @@
 class ChartsController < ApplicationController
     before_action :login_required, only: [:show, :new, :edit]
-    before_action :set_chart, only: [:show, :edit, :update]
+    before_action :set_chart, only: [:show, :edit, :update, :destroy]
 
     def show
     end
@@ -27,6 +27,11 @@ class ChartsController < ApplicationController
         else
             render :edit
         end
+    end
+
+    def destroy
+        @chart.destroy
+        redirect_to vet_path(@chart.vet)
     end
 
     private
