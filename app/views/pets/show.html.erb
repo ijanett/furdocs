@@ -27,7 +27,7 @@
   </tbody>
 </table>
 <br>
-<% if !Appointment.upcoming_appts_for(@pet).empty? %>
+<% if !Appointment.upcoming_appts_for_pet(@pet).empty? %>
 <h3>Upcoming Appointments</h3>
 <table class="table table-borderless">
   <thead>
@@ -38,7 +38,7 @@
     </tr>
   </thead>
   <tbody>
-    <% Appointment.upcoming_appts_for(@pet).each do |appt| %>
+    <% Appointment.upcoming_appts_for_pet(@pet).each do |appt| %>
         <tr>
           <td><%= appt_date(appt) %></td>
           <td><%= appt_time(appt) %></td>

@@ -13,19 +13,19 @@ class Appointment < ApplicationRecord
     where('appointments.date < ?', DateTime.now).order(date: :desc).order(time: :desc)
   end
 
-  def self.upcoming_appts_for(vet)
+  def self.upcoming_appts_for_vet(vet)
     self.upcoming_appts.where('appointments.vet_id == ?', vet.id)
   end
 
-  def self.past_appts_for(vet)
+  def self.past_appts_for_vet(vet)
     self.past_appts.where('appointments.vet_id == ?', vet.id)
   end
 
-  def self.upcoming_appts_for(pet)
+  def self.upcoming_appts_for_pet(pet)
     self.upcoming_appts.where('appointments.pet_id == ?', pet.id)
   end
 
-  def self.past_appts_for(pet)
+  def self.past_appts_for_pet(pet)
     self.past_appts.where('appointments.pet_id == ?', pet.id)
   end
 end

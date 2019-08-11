@@ -12,7 +12,7 @@
             <th>Date</th>
             <th>Time</th>
         </tr>
-        <% Appointment.upcoming_appts_for(@vet).each do |appt| %>
+        <% Appointment.upcoming_appts_for_vet(@vet).each do |appt| %>
         
         <tr>
             <td><%= link_to appt.pet.name, pet_path(appt.pet) %></td>
@@ -22,7 +22,7 @@
     <% end %>
 </table>
 <br><br>
-  <% if !Appointment.past_appts_for(@vet).empty? %>
+  <% if !Appointment.past_appts_for_vet(@vet).empty? %>
     <div class="accordion" id="accordionExample">
       <div class="card">
         <div class="card-header" id="headingOne">
@@ -48,7 +48,7 @@
                   <th>Time</th>
                 </tr>
 
-                <% Appointment.past_appts_for(@vet).each do |appt| %>
+                <% Appointment.past_appts_for_vet(@vet).each do |appt| %>
                 <tr>
                     <td><%= link_to appt.pet.name, pet_path(appt.pet) %></td>
                     <td><%= appt_date(appt) %></td>
