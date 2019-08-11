@@ -4,6 +4,16 @@ class Appointment < ApplicationRecord
 
   validates_presence_of :vet_id, :pet_id, :date, :time
   validates_uniqueness_of :time, {scope: [:date, :vet_id], message: "unavailable, please choose a different time"}
+  validate :date_cannot_be_in_the_past
+  validate :time_cannot_be_in_the_past
+
+  def date_cannot_be_in_the_past
+    errors.add(:date, "can't be in the past") if date < Date.today
+  end
+
+  def time_cannot_be_in_the_past
+    errors.add(:time, "can't be in the past") if date == Date.today && time.strftime("%T") < Time.current.strftime("%T")
+  end
 
   def self.upcoming_appts
     where('appointments.date >= ?', DateTime.now).order(date: :asc).order(time: :asc)

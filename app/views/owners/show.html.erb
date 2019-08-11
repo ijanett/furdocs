@@ -1,6 +1,6 @@
 <h3>Hello <%= @owner.first_name %>!</h3>
 <% if @owner.pets.empty? %>
-<p>Submit your pet's information with the 'new pet' above to make and keep track of appointments and medical records.</p>
+<p>Submit your pet's information with the 'new pet' form above to make and keep track of appointments and medical records.</p>
 <% else %>
 <p><%= @owner.pets_count %></p>
     <% @owner.pets.each do |pet| %>
