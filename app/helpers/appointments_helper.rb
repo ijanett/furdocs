@@ -11,8 +11,4 @@ module AppointmentsHelper
     def vet_clinic(appt)
         appt.vet.clinic
     end
-
-    def pets_ordered
-        Pet.all.order(:name)
-    end
 end

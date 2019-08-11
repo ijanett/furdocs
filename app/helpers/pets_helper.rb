@@ -7,4 +7,8 @@ module PetsHelper
     def pet_upcoming_appts(pet)
         Appointment.upcoming_appts_for_pet(pet)
     end
+
+    def pets_ordered
+        Pet.all.order(:name)
+    end
 end
