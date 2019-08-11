@@ -1,0 +1,20 @@
+<table class="table table-borderless">
+<thead>
+    <tr>
+      <th scope="col">Vaccination</th>
+      <th scope="col">Medication</th>
+      <th scope="col">Diagnosis</th>
+      <th scope="col">Notes</th>
+    </tr>
+</thead>
+<tbody>
+    <% @pet.charts.each do |chart| %>
+    <tr>
+      <td align="center"><%= vacc_if_true(chart) %></td>
+      <td align="center"><%= med_if_true(chart) %></td>
+      <td align="center"><%= diag_if_true(chart) %></td>
+      <td><%if is_vet %><%= link_to chart.note, vet_chart_path(is_vet, chart) %><%else%><%= link_to chart.note, pet_chart_path(@pet, chart) %><%end%></td>
+    </tr>
+    <% end %>
+</tbody>
+</table>

@@ -1,0 +1,20 @@
+<table class="table table-borderless">
+    
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Vet</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% upcoming_appts(@pet).each do |appt| %>
+        <tr>
+          <td><%= appt_date(appt) %></td>
+          <td><%= appt_time(appt) %></td>
+          <td><%= appt.vet.full_dr_name %>
+        </tr>
+      <% end %>
+  </tbody>
+
+</table>

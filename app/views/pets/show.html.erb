@@ -1,79 +1,21 @@
 <h3>Pet Info</h3>
 
-<table class="table table-borderless">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <td><%= @pet.name %></td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Breed</th>
-      <td><%= @pet.breed %></td>
-    </tr>
-    <tr>
-      <th scope="row">Color</th>
-      <td><%= @pet.color %></td>
-    </tr>
-    <tr>
-      <th scope="row">Birthdate</th>
-      <td><%= birthdate(@pet) %> (<%if @pet.age_years > 0 %><%= @pet.age_years %>y/o <% else %><%= @pet.age_months%>m/o<% end %>)</td>
-    </tr>
-    <tr>
-      <th scope="row">Gender</th>
-      <td><%= @pet.gender.capitalize %></td>
-    </tr>
-  </tbody>
-</table>
+  <%= render 'table_pet_info' %>
 <br>
-<% if !Appointment.upcoming_appts_for_pet(@pet).empty? %>
-<h3>Upcoming Appointments</h3>
-<table class="table table-borderless">
-  <thead>
-    <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Vet</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% Appointment.upcoming_appts_for_pet(@pet).each do |appt| %>
-        <tr>
-          <td><%= appt_date(appt) %></td>
-          <td><%= appt_time(appt) %></td>
-          <td><%= appt.vet.full_dr_name %>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+
+<% if !upcoming_appts(@pet).empty? %>
+  <h3>Upcoming Appointments</h3>
+
+      <%= render 'table_appts' %>
 <% end %>
+<br>
 
 <% if !@pet.charts.empty? %>
-<h3>Medical Chart</h3>
-<table class="table table-borderless">
-  <thead>
-    <tr>
-      <th scope="col">Vaccination</th>
-      <th scope="col">Medication</th>
-      <th scope="col">Diagnosis</th>
-      <th scope="col">Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @pet.charts.each do |chart| %>
-    <tr>
-      <td align="center"><%= vacc_if_true(chart) %></td>
-      <td align="center"><%= med_if_true(chart) %></td>
-      <td align="center"><%= diag_if_true(chart) %></td>
-      <td><%if is_vet %><%= link_to chart.note, vet_chart_path(is_vet, chart) %><%else%><%= link_to chart.note, pet_chart_path(@pet, chart) %><%end%></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+  <h3>Medical Chart</h3>
+  
+    <%= render 'table_pet_chart' %>
 <% end %>
+<br>
 
 <h3>Owner Contact</h3>
 <p><strong>Full Name: </strong><%= @pet.owner.full_name %></p>
