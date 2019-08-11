@@ -1,7 +1,7 @@
 <%= form_for @appointment do |f| %>
     <%= f.hidden_field :pet_id %>
     <%= f.label "Choose a Vet:" %>
-    <%= f.collection_select :vet_id, Vet.all, :id, :full_dr_name, {:prompt => "Please choose a vet"} %>
+    <%= f.grouped_collection_select :vet_id, Clinic.all, :vets, :name, :id, :full_dr_name, {:prompt => "Please choose a vet"} %>
     <br>
     <%= f.label "Date:" %>
     <%= f.date_field :date %>
