@@ -3,7 +3,7 @@
   <%= render 'table_pet_info' %>
 <br>
 
-<% if !upcoming_appts(@pet).empty? %>
+<% if !pet_upcoming_appts(@pet).empty? %>
   <h3>Upcoming Appointments</h3>
 
       <%= render 'table_appts' %>

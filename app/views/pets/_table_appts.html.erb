@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-      <% upcoming_appts(@pet).each do |appt| %>
+      <% pet_upcoming_appts(@pet).each do |appt| %>
         <tr>
           <td><%= appt_date(appt) %></td>
           <td><%= appt_time(appt) %></td>
