@@ -7,4 +7,8 @@ module AppointmentsHelper
     def appt_time(appt)
         appt.time.strftime("%l:%M %p")
     end
+
+    def vet_clinic(vet)
+        self.vet.clinic
+    end
 end
