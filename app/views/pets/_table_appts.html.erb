@@ -5,6 +5,9 @@
       <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th scope="col">Vet</th>
+      <% if is_vet %>
+      <th scope="col">Actions</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -12,7 +15,12 @@
         <tr>
           <td><%= appt_date(appt) %></td>
           <td><%= appt_time(appt) %></td>
-          <td><%= appt.vet.full_dr_name %>
+          <td><%= appt.vet.full_dr_name %></td>
+          <% if is_vet %>
+          <td><%= link_to "Edit", edit_vet_appointment_path(appt.vet, appt)%> |
+              <%= link_to "Delete", appt, method: :delete, data: {confirm: "Are you sure you want to delete this appointment?"}%>
+          </td>
+          <% end %>
         </tr>
       <% end %>
   </tbody>

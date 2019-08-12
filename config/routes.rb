@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   root 'sessions#welcome'
 
   resources :clinics, only: [:index, :show]
-  resources :appointments, only: [:show, :new, :create]
+  resources :appointments, only: [:show, :new, :create, :edit, :update, :destroy]
   resources :charts, only: [:new, :create, :edit, :update, :destroy]
 
   resources :vets, only: [:show, :new, :create] do
-    resources :appointments, only: [:show, :new, :create]
+    resources :appointments, only: [:show, :new, :create, :edit, :destroy]
     resources :charts, only: [:show, :new, :create, :edit, :destroy]
   end
 
