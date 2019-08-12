@@ -17,7 +17,7 @@ Pet owners can:
    - veiw their pets' upcoming appointment details and medical charts
    - view a list of all clinics and vets at each clinic
 
-Possible updates:
+Possible future updates:
    - add working hours for vets
    - include an appointments calendar to see open time slots
 
