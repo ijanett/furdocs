@@ -16,11 +16,11 @@ class Appointment < ApplicationRecord
   end
 
   def self.upcoming_appts
-    where('appointments.date >= ?', DateTime.now).order(date: :asc).order(time: :asc)
+    where('appointments.date >= ?', Date.today).where('appointments.time > ?', Time.current.strftime("%T")).order(date: :asc).order(time: :asc)
   end
 
   def self.past_appts
-    where('appointments.date < ?', DateTime.now).order(date: :desc).order(time: :desc)
+    where('appointments.date < ?', DateTime.now).where('appointments.time < ?', Time.current.strftime("%T")).order(date: :desc).order(time: :desc)
   end
 
   def self.upcoming_appts_for_vet(vet)
