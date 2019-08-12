@@ -1,14 +1,11 @@
 <h3>Hello, <%= @vet.dr_last_name %></h3>
 <p><%= @vet.appointment_count %></p>
-  <% if !@vet.appointments.empty? %>
-
-    <%= render 'table_appts' %>
-  
-    <% if !vet_past_appts(@vet).empty? %>
-
-      <%= render 'coll_past_appts' %>
-      
-    <% end %>
+  <% if !vet_upcoming_appts(@vet).empty? %>
+      <%= render 'table_appts' %>
   <% else %>
       <p>Use the 'new' forms above to create new appointments and charts.</p>
+  <% end %>
+
+  <% if !vet_past_appts(@vet).empty? %>
+    <%= render 'coll_past_appts' %>
   <% end %>
