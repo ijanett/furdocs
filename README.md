@@ -19,7 +19,9 @@ Pet owners can:
 
 Possible future updates:
    - add working hours for vets
-   - include an appointments calendar to see open time slots
+   - add open/close hours to clinics
+   - include an appointments calendar to show open and booked time blocks
+   - include another third party login (e.g. Google)
 
 ## Installation
 
