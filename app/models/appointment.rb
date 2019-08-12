@@ -8,7 +8,7 @@ class Appointment < ApplicationRecord
   validate :time_cannot_be_in_the_past
 
   def date_cannot_be_in_the_past
-    errors.add(:date, "can't be in the past") if date < Date.today
+    errors.add(:date, "can't be in the past") if !date.blank? && date < Date.today
   end
 
   def time_cannot_be_in_the_past
