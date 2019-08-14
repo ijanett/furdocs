@@ -16,26 +16,26 @@ class Appointment < ApplicationRecord
   end
 
   def self.upcoming_appts
-    where('appointments.date >= ?', Date.today).where('appointments.time >= ?', Time.now.strftime("%H:%M:%S")).order(date: :asc).order(time: :asc)
+    where('appointments.date >= ?', Date.today).where('appointments.time > ?', Time.current).order(date: :asc).order(time: :asc)
   end
 
   def self.past_appts
-    where('appointments.date < ?', DateTime.now).order(date: :desc).order(time: :desc)
+    where('appointments.date < ?', DateTime.now).where('appointments.time < ?', Time.current).order(date: :desc).order(time: :desc)
   end
 
   def self.upcoming_appts_for_vet(vet)
-    self.upcoming_appts.where('appointments.vet_id == ?', vet.id)
+    self.upcoming_appts.where('appointments.vet_id = ?', vet.id)
   end
 
   def self.past_appts_for_vet(vet)
-    self.past_appts.where('appointments.vet_id == ?', vet.id)
+    self.past_appts.where('appointments.vet_id = ?', vet.id)
   end
 
   def self.upcoming_appts_for_pet(pet)
-    self.upcoming_appts.where('appointments.pet_id == ?', pet.id)
+    self.upcoming_appts.where('appointments.pet_id = ?', pet.id)
   end
 
   def self.past_appts_for_pet(pet)
-    self.past_appts.where('appointments.pet_id == ?', pet.id)
+    self.past_appts.where('appointments.pet_id = ?', pet.id)
   end
 end
