@@ -3,7 +3,9 @@ class PetsController < ApplicationController
 
     def show
         @pet = Pet.find(params[:id])
-        if current_owner.id != @pet.owner.id
+        if is_vet
+            render :show
+        elsif current_owner.id != @pet.owner.id
             redirect_to owner_url(current_owner), alert: "Uh-oh! Cannot get /owners/#{params[:id]}."
         end
     end
