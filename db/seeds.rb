@@ -78,7 +78,7 @@ end
 
 pets = [
     {name: "Bear", color: "Red", breed: "Chow Chow", dob: "2014-04-15", gender: 0, owner_id: 3},
-    {name: "Meatball", color: "Tan", breed: "French Bulldog", dob: "2013-07-05", gender: 0, owner_id: 12},
+    # {name: "Meatball", color: "Tan", breed: "French Bulldog", dob: "2013-07-05", gender: 0, owner_id: 12},
     {name: "Oreo", color: "Black & White", breed: "Dalmatian", dob: "2016-03-12", gender: 0, owner_id: 6},
     {name: "Lucky", color: "White & Tan", breed: "Jack Russell Terrier", dob: "2015-09-20", gender: 0, owner_id: 7},
     {name: "Bubba", color: "Tri Color", breed: "Bernedoodle", dob: "2017-06-17", gender: 0, owner_id: 10},
@@ -105,12 +105,12 @@ pets = [
     {name: "Cinnamon", color: "Chocolate & Tan", breed: "Dachshund", dob: "2016-02-08", gender: 1, owner_id: 5},
     {name: "Dex", color: "Cream", breed: "Cymric", dob: "2017-07-04", gender: 0, owner_id: 9},
     {name: "Joy", color: "Spotted Golden", breed: "Savannah", dob: "2017-09-01", gender: 1, owner_id: 8},
-    {name: "Junebug", color: "Brown", breed: "Chesapeake Bay Retriever", dob: "2018-06-17", gender: 1, owner_id: 12},
+    # {name: "Junebug", color: "Brown", breed: "Chesapeake Bay Retriever", dob: "2018-06-17", gender: 1, owner_id: 12},
     {name: "Fluffy", color: "White", breed: "Samoyed", dob: "2016-08-16", gender: 1, owner_id: 4},
     {name: "Hamlet", color: "Tan", breed: "Sphynx", dob: "2019-02-20", gender: 0, owner_id: 4},
     {name: "Snowy", color: "White", breed: "Turkish Angora", dob: "2017-01-12", gender: 1, owner_id: 4},
     {name: "Remy", color: "Cream", breed: "Borzoi", dob: "2018-03-07", gender: 0, owner_id: 9},
-    {name: "Cooper", color: "Black", breed: "Newfoundland", dob: "2016-05-12", gender: 0, owner_id: 12},
+    # {name: "Cooper", color: "Black", breed: "Newfoundland", dob: "2016-05-12", gender: 0, owner_id: 12},
     {name: "Nugget", color: "Golden", breed: "Golden Retriever", dob: "2014-12-08", gender: 0, owner_id: 4},
 ]
 
