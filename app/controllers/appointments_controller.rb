@@ -25,7 +25,7 @@ class AppointmentsController < ApplicationController
     end
   
     def create
-        @appointment = Appointment.find_or_create_by(appt_params)
+        @appointment = Appointment.find_or_create_by(configured_params)
 
         if @appointment.save
             if is_vet
@@ -53,7 +53,7 @@ class AppointmentsController < ApplicationController
     end
 
     def update
-        if @appointment.update(appt_params)
+        if @appointment.update(configured_params)
             redirect_to vet_appointment_url(@appointment.vet, @appointment)
         else
             render :edit
@@ -69,6 +69,12 @@ class AppointmentsController < ApplicationController
 
     def appt_params
         params.required(:appointment).permit(:vet_id, :pet_id, :date, :time)
+    end
+
+    def configured_params
+        nparams = appt_params.dup
+        nparams[:time] = "#{appt_params[:date]} #{appt_params[:time]}"
+        nparams
     end
 
     def set_appt
