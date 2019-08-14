@@ -3,10 +3,17 @@ class PetsController < ApplicationController
 
     def show
         @pet = Pet.find(params[:id])
+        if current_owner.id != @pet.owner.id
+            redirect_to owner_url(current_owner), alert: "Uh-oh! Cannot get /owners/#{params[:id]}."
+        end
     end
 
     def new
-        @pet = Pet.new(owner_id: params[:owner_id])
+        if params[:owner_id].to_i != current_owner.id
+            redirect_to owner_url(current_owner), alert: "Uh-oh! Wrong owner."
+        else
+            @pet = Pet.new(owner_id: params[:owner_id])
+        end
     end
 
     def create

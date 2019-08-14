@@ -16,8 +16,8 @@ class AppointmentsController < ApplicationController
         else
             pet = Pet.find_by(id: params[:pet_id])
             if current_owner.id != pet.owner.id
-                flash[:notice] = "Uh-oh! That's not your pet."
-                redirect_to owner_path(current_owner)
+                flash[:notice] = "Uh-oh! Cannot get /owners/#{params[:id]}."
+                redirect_to owner_url(current_owner)
             else
                 @appointment = Appointment.new(pet_id: params[:pet_id])
             end
@@ -29,9 +29,9 @@ class AppointmentsController < ApplicationController
 
         if @appointment.save
             if is_vet
-                redirect_to vet_appointment_path(@appointment.vet, @appointment)
+                redirect_to vet_appointment_url(@appointment.vet, @appointment)
             elsif current_owner
-                redirect_to pet_appointment_path(@appointment.pet, @appointment)
+                redirect_to pet_appointment_url(@appointment.pet, @appointment)
             end
         else
             render :new
@@ -54,7 +54,7 @@ class AppointmentsController < ApplicationController
 
     def update
         if @appointment.update(appt_params)
-            redirect_to vet_appointment_path(@appointment.vet, @appointment)
+            redirect_to vet_appointment_url(@appointment.vet, @appointment)
         else
             render :edit
         end
@@ -62,7 +62,7 @@ class AppointmentsController < ApplicationController
 
     def destroy
         @appointment.destroy
-        redirect_to vet_path(@appointment.vet)
+        redirect_to vet_url(@appointment.vet)
     end
 
     private
