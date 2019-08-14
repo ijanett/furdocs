@@ -1,15 +1,26 @@
 class AppointmentsController < ApplicationController
     before_action :login_required, only: [:show, :new]
-    before_action :set_appt, only: [:show, :edit, :update, :destroy]
+    before_action :set_appt, only: [:show, :update, :destroy]
 
     def show
     end
 
     def new
         if is_vet
-            @appointment = Appointment.new(vet_id: params[:vet_id])
+            if is_vet.id != params[:vet_id].to_i
+                flash[:notice] = "Uh-oh! Wrong vet."
+                redirect_to vet_url(is_vet)
+            else
+                @appointment = Appointment.new(vet_id: params[:vet_id])
+            end
         else
-            @appointment = Appointment.new(pet_id: params[:pet_id])
+            pet = Pet.find_by(id: params[:pet_id])
+            if current_owner.id != pet.owner.id
+                flash[:notice] = "Uh-oh! That's not your pet."
+                redirect_to owner_path(current_owner)
+            else
+                @appointment = Appointment.new(pet_id: params[:pet_id])
+            end
         end
     end
   
@@ -28,6 +39,17 @@ class AppointmentsController < ApplicationController
     end
 
     def edit
+        if params[:vet_id]
+            vet = Vet.find_by(id: params[:vet_id])
+            if vet.nil?
+                redirect_to vet_url(is_vet), alert: "Vet not found."
+            else
+                @appointment = vet.appointments.find_by(id: params[:id])
+                redirect_to vet_url(is_vet), alert: "Uh-oh! Something went wrong. Please try again." if @appointment.nil?
+            end
+        else
+            @appointment = Appointment.find(params[:id])
+        end
     end
 
     def update

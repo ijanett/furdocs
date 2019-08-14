@@ -1,12 +1,17 @@
 class ChartsController < ApplicationController
     before_action :login_required, only: [:show, :new, :edit]
-    before_action :set_chart, only: [:show, :edit, :update, :destroy]
+    before_action :set_chart, only: [:show, :update, :destroy]
 
     def show
     end
 
     def new
-        @chart = Chart.new(vet_id: params[:vet_id])
+        if is_vet.id != params[:vet_id].to_i
+            flash[:notice] = "Uh-oh! Wrong vet."
+            redirect_to vet_url(is_vet)
+        else
+            @chart = Chart.new(vet_id: params[:vet_id])
+        end
     end
 
     def create
@@ -19,6 +24,17 @@ class ChartsController < ApplicationController
     end
 
     def edit
+        if params[:vet_id]
+            vet = Vet.find_by(id: params[:vet_id])
+            if vet.nil?
+                redirect_to vet_url(is_vet), alert: "Vet not found."
+            else
+                @chart = vet.charts.find_by(id: params[:id])
+                redirect_to vet_url(is_vet), alert: "Chart not found." if @chart.nil?
+            end
+        else
+            @chart = Chart.find(params[:id])
+        end
     end
 
     def update

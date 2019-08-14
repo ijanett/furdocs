@@ -2,7 +2,10 @@ class VetsController < ApplicationController
     before_action :login_required, only: :show
 
     def show
-        @vet = Vet.find(params[:id])
+        @vet = Vet.find_by(id: params[:id])
+        if @vet.nil? || @vet.id != is_vet.id
+            redirect_to vet_url(is_vet), alert: "Something went wrong."
+        end
     end
 
     def new
