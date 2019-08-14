@@ -1,4 +1,4 @@
-<h3>Medical Card for <%= @chart.pet.name %></h3>
+<h3>Medical Card for <%= link_to @chart.pet.name, pet_path(@chart.pet) %></h3>
 <table class="table">
   <caption>Reviewed by <%= @chart.vet.full_dr_name %></caption>
   <thead>
