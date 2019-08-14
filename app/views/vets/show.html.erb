@@ -1,4 +1,5 @@
 <h3>Hello, <%= @vet.dr_last_name %></h3>
+<p><strong>Your Practice Location: </strong><%= link_to @vet.clinic.name, clinic_path(@vet.clinic) %></p>
 <p><%= @vet.appointment_count %></p>
   <% if !vet_upcoming_appts(@vet).empty? %>
       <%= render 'table_appts' %>
