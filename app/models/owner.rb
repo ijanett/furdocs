@@ -6,7 +6,7 @@ class Owner < ApplicationRecord
     end
 
     def pets_count
-        "You have " + self.pets.count.to_s + " pets."
+        "You have " + self.pets.count.to_s + " pet(s)."
     end
 
     def pets_order_by_age
