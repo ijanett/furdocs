@@ -16,8 +16,7 @@ class Pet < ApplicationRecord
 
   def age_months
     if age_years == 0
-      now = Time.current
-      now.month - self.dob.month - ((now.day >= self.dob.day || now.day < self.dob.day) ? 0 : 1)
+      self.dob ? ((Time.zone.today - self.dob) / 30.437).to_i : 0
     end
   end
 end
