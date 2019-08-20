@@ -5,6 +5,7 @@ class Pet < ApplicationRecord
   has_many :charts
 
   enum gender: [ :male, :female ]
+  enum species: [ :canine, :feline ]
 
   validates_presence_of :name, :breed, :color, :dob, :gender
 
