@@ -19,6 +19,10 @@
         <td><%= birthdate(@pet) %> (<%if @pet.age_years > 0 %><%= @pet.age_years %>y/o <% else %><%= @pet.age_months%>m/o<% end %>)</td>
     </tr>
     <tr>
+        <th scope="row">Species</th>
+        <td><%= @pet.species %></td>
+    </tr>
+    <tr>
         <th scope="row">Gender</th>
         <td><%= @pet.gender.capitalize %></td>
     </tr>
