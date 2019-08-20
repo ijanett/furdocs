@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_11_193049) do
+ActiveRecord::Schema.define(version: 2019_08_20_181859) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "vet_id"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_08_11_193049) do
     t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "species"
     t.index ["owner_id"], name: "index_pets_on_owner_id"
   end
 
