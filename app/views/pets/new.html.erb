@@ -16,6 +16,12 @@
     <%= f.label "Date of Birth:" %>
     <%= f.date_field :dob %>
     <br>
+    <%= f.label "Species:" %>
+    <%= f.label "Canine" %>
+    <%= f.radio_button :species, "canine" %>
+    <%= f.label "Feline" %>
+    <%= f.radio_button :species, "feline" %>
+    <br>
     <%= f.label "Gender:" %>
     <%= f.label "Male" %>
     <%= f.radio_button :gender, "male" %>
