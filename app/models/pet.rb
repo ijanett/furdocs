@@ -19,4 +19,16 @@ class Pet < ApplicationRecord
       self.dob ? ((Time.zone.today - self.dob) / 30.437).to_i : 0
     end
   end
+
+  def self.with_species(species) #for grouped_pets_for_select pets helper method
+    where(species: species[species]).order(:name)
+  end
+
+  # def self.all_cats
+  #   where('species = ?', 1).order(:name)
+  # end
+
+  # def self.all_dogs
+  #   where('species = ?', 0).order(:name)
+  # end
 end
