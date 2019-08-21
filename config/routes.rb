@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :charts, only: [:new, :create, :edit, :update, :destroy]
 
   resources :vets, only: [:show, :new, :create] do
-    resources :appointments, only: [:show, :new, :create, :edit, :destroy]
-    resources :charts, only: [:show, :new, :create, :edit, :destroy]
+    resources :appointments, except: [:index, :update]
+    resources :charts, except: [:index, :update]
   end
 
   resources :pets, only: [:show, :new, :create] do
