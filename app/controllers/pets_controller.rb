@@ -30,7 +30,7 @@ class PetsController < ApplicationController
 
     private
 
-    def pet_params
+    def pet_params # would like to add an image attribute somehow
         params.require(:pet).permit(:name, :color, :breed, :dob, :species, :gender, :owner_id)
     end
 end
