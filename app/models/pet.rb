@@ -7,7 +7,7 @@ class Pet < ApplicationRecord
   enum gender: [ :male, :female ]
   enum species: [ :canine, :feline ]
 
-  validates_presence_of :name, :breed, :color, :dob, :gender
+  validates_presence_of :name, :breed, :color, :dob, :species, :gender
 
   def age_years
     now = Time.current
