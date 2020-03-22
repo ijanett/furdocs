@@ -4,10 +4,10 @@
     <%= f.grouped_collection_select :vet_id, Clinic.all, :vets, :name, :id, :full_dr_name, {:prompt => "Please choose a vet"} %>
     <br>
     <%= f.label "Date:" %>
-    <%= f.date_field :date %>
+    <%= f.date_field :date, placeholder: "yyyy/mm/dd" %>
     <br>
     <%= f.label "Time:" %>
-    <%= f.time_field :time %>
+    <%= f.time_field :time, placeholder: "--:-- --" %>
     <br><br>
     <%= f.submit "Submit" %>
 <% end %>
