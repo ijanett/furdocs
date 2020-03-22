@@ -21,7 +21,7 @@ class Appointment < ApplicationRecord
   # end
 
   def self.future_date_apts
-    where('date > ?', Date.today).order(date: :asc, time: :asc)
+    where('date > ?', Date.today)
   end
 
   def self.future_time_apts
@@ -33,7 +33,7 @@ class Appointment < ApplicationRecord
   # end
 
   def self.prev_date_apts
-    where('date < ?', Date.today).order(date: :desc, time: :desc)
+    where('date < ?', Date.today)
   end
 
   def self.prev_time_apts
@@ -41,11 +41,11 @@ class Appointment < ApplicationRecord
   end
 
   def self.future_vet_apts(v)
-    self.future_date_apts.where('appointments.vet_id = ?', v.id) + self.future_time_apts.where('appointments.vet_id = ?', v.id)
+    self.future_date_apts.where('appointments.vet_id = ?', v.id) + self.future_time_apts.where('appointments.vet_id = ?', v.id).order(date: :asc, time: :asc)
   end
 
   def self.prev_vet_apts(v)
-    self.prev_date_apts.where('appointments.vet_id = ?', v.id) + self.prev_time_apts.where('appointments.vet_id = ?', v.id)
+    self.prev_date_apts.where('appointments.vet_id = ?', v.id) + self.prev_time_apts.where('appointments.vet_id = ?', v.id).order(date: :desc, time: :desc)
   end
 
   # def self.upcoming_appts_for_vet(vet)
@@ -57,11 +57,11 @@ class Appointment < ApplicationRecord
   # end
 
   def self.future_pet_apts(p)
-    self.future_date_apts.where('appointments.pet_id = ?', p.id) + self.future_time_apts.where('appointments.pet_id = ?', p.id)
+    self.future_date_apts.where('appointments.pet_id = ?', p.id) + self.future_time_apts.where('appointments.pet_id = ?', p.id).order(date: :asc, time: :asc)
   end
 
   def self.prev_pet_apts(p)
-    self.prev_date_apts.where('appointments.pet_id = ?', p.id) + self.prev_time_apts.where('appointments.pet_id = ?', p.id)
+    self.prev_date_apts.where('appointments.pet_id = ?', p.id) + self.prev_time_apts.where('appointments.pet_id = ?', p.id).order(date: :desc, time: :desc)
   end
 
   # def self.upcoming_appts_for_pet(pet)

@@ -22,6 +22,6 @@ class Vet < ApplicationRecord
     end
 
     def appointment_count
-        "You have " + Appointment.upcoming_appts_for_vet(self).count.to_s + " upcoming appointment(s)."
+        "You have " + Appointment.future_vet_apts(self).count.to_s + " upcoming appointment(s)."
     end
 end
