@@ -5,7 +5,7 @@ module PetsHelper
     end
 
     def pet_upcoming_appts(pet)
-        Appointment.upcoming_appts_for_pet(pet)
+        Appointment.future_pet_apts(pet)
     end
 
     def pets_ordered
