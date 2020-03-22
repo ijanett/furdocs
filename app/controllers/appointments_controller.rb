@@ -26,7 +26,7 @@ class AppointmentsController < ApplicationController
   
     def create
         @appointment = Appointment.find_or_create_by(configured_params)
-
+    
         if @appointment.save
             if is_vet
                 redirect_to vet_appointment_url(@appointment.vet, @appointment)

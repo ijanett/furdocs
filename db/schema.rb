@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2019_08_20_181859) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "appointments", force: :cascade do |t|
-    t.integer "vet_id"
-    t.integer "pet_id"
+    t.bigint "vet_id"
+    t.bigint "pet_id"
     t.date "date"
-    t.datetime "time"
+    t.time "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pet_id"], name: "index_appointments_on_pet_id"
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 2019_08_20_181859) do
   end
 
   create_table "charts", force: :cascade do |t|
-    t.integer "vet_id"
-    t.integer "pet_id"
+    t.bigint "vet_id"
+    t.bigint "pet_id"
     t.boolean "vaccination", default: false
     t.boolean "medication", default: false
     t.boolean "diagnosis", default: false
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_181859) do
     t.string "breed"
     t.date "dob"
     t.integer "gender"
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "species"
@@ -72,10 +75,16 @@ ActiveRecord::Schema.define(version: 2019_08_20_181859) do
     t.string "last_name"
     t.string "email"
     t.string "password_digest"
-    t.integer "clinic_id"
+    t.bigint "clinic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["clinic_id"], name: "index_vets_on_clinic_id"
   end
 
+  add_foreign_key "appointments", "pets"
+  add_foreign_key "appointments", "vets"
+  add_foreign_key "charts", "pets"
+  add_foreign_key "charts", "vets"
+  add_foreign_key "pets", "owners"
+  add_foreign_key "vets", "clinics"
 end
