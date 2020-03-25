@@ -21,4 +21,7 @@
     <br><br>
 
     <%= f.submit "Register" %>
+    <%= f.submit "Reset", :type => "reset" %>
+
+    <p>Already registered? <%= link_to "Login", login_url %></p>
 <% end %>
