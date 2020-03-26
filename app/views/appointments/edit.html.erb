@@ -1,2 +1,18 @@
 <%= render 'form_errors' %>
-<%= render 'vet_form' %>
+<%= form_for @appointment do |f| %>
+    <%= f.hidden_field :vet_id %>
+    <div class="form-group">
+        <%= f.select :pet_id, grouped_pets_for_select(@appointment.pet.id), {:prompt => "Please choose a patient"}, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label "Date:"%>
+        <%= f.date_field :date, class: "form-control", placeholder: "yyyy/mm/dd" %>
+    </div>
+    <div class="form-group">
+        <%= f.label "Time:" %>
+        <%= f.time_field :time, class: "form-control", placeholder: "hh:mm tt" %>
+    </div>
+    <div class="actions">
+        <%= f.submit "Submit", class: "btn btn-info" %>
+    </div>
+<% end %>
