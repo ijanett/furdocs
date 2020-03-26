@@ -1,27 +1,28 @@
 <%= render 'form_errors' %>
 
 <%= form_for @vet do |f| %>
-    <%= f.label "First Name:" %>
-    <%= f.text_field :first_name %>
-    <br>
-    <%= f.label "Last Name:" %>
-    <%= f.text_field :last_name %>
-    <br>
-    <%= f.label "Email:" %>
-    <%= f.text_field :email %>
-    <br>
-    <%= f.label "Password:" %>
-    <%= f.password_field :password %>
-    <br>
-    <%= f.label "Password Confirmation:"%>
-    <%= f.password_field :password_confirmation %>
-    <br>
-    <%= f.label "Clinic:"%>
-    <%= collection_select :vet, :clinic_id, Clinic.all, :id, :name, {:prompt => "Please select your practice location"} %>
-    <br><br>
-
-    <%= f.submit "Register" %>
-    <%= f.submit "Reset", :type => "reset" %>
+    <div class="form-group">
+        <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+    </div>
+    <div class="form-group">
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+    </div>
+    <div class="form-group">
+        <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+    </div>
+    <div class="form-group">
+        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+    </div>
+    <div class="form-group">
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
+    </div>
+    <div class="form-group">
+        <%= collection_select :vet, :clinic_id, Clinic.all, :id, :name, {:prompt => "Please select your practice location"}, class: "form-control" %>
+    </div>
+    <div class="actions">
+        <%= f.submit "Register", class: "btn btn-info" %>
+        <%= f.submit "Reset", :type => "reset", class: "btn btn-info" %>
+    </div>
 
     <p>Already registered? <%= link_to "Login", login_url %></p>
 <% end %>

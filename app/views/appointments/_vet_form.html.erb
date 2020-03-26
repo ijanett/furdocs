@@ -1,13 +1,17 @@
 <%= form_for @appointment do |f| %>
     <%= f.hidden_field :vet_id %>
-    <%= f.label "Patient:" %>
-    <%= f.select :pet_id, grouped_pets_for_select(params[:pet_id]), {:prompt => "Please choose a patient"} %>
-    <br>
-    <%= f.label "Date:" %>
-    <%= f.date_field :date, placeholder: "yyyy/mm/dd" %>
-    <br>
-    <%= f.label "Time:" %>
-    <%= f.time_field :time, placeholder: "hh:mm tt" %>
-    <br>
-    <%= f.submit "Submit" %>
+    <div class="form-group">
+        <%= f.select :pet_id, grouped_pets_for_select(params[:pet_id]), {:prompt => "Please choose a patient"}, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label "Date:"%>
+        <%= f.date_field :date, class: "form-control", placeholder: "yyyy/mm/dd" %>
+    </div>
+    <div class="form-group">
+        <%= f.label "Time:" %>
+        <%= f.time_field :time, class: "form-control", placeholder: "hh:mm tt" %>
+    </div>
+    <div class="actions">
+        <%= f.submit "Submit", class: "btn btn-info" %>
+    </div>
 <% end %>

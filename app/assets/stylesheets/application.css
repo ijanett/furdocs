@@ -14,13 +14,51 @@
  *= require_self
  */
 
-a {
+* {
+    font-family: 'Playfair Display', serif;
+}
+
+p, a {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+}
+
+h3 a {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+}
+
+.container h2, .container h3, .container p, .container a.vet-form, div.form-group, div.list-group, fieldset.form-group, label.form-control-label, div.actions, ul.list-group.list-group-flush {
+        padding: 0px 40px;
+    }
+
+.container a.list-group-item {
+    padding: 10px 40px;
+}
+
+.container table {
+    margin: 0px 40px;
+}
+
+.container table a {
+    padding: 0px;
+}
+
+.container a, button.btn.btn-link {
     color: #379ea9;
 }
 
-a:hover {
-    color: #2c7982;
+.container a:hover, button.btn.btn-link:hover {
+    color: #163a3e
 }
+
+h2 {
+    height: 40px;
+}
+
+/* h2, form {
+    margin: 1rem rem;
+} */
 
 .navbar {
     margin-left: 5px;
@@ -32,20 +70,18 @@ a:hover {
     margin-right: 2px;
 }
 
-#welcome-msg img {
+#welcome-msg {
     position: relative;
-    margin-top: 2px;
+    text-align: center;
 }
 
 #welcome-msg h2 {
     font-family: 'Playfair Display', serif;
     position: absolute;
     color: #379ea9;
-    bottom: 50px;
-    text-align: center;
+    bottom: 10%;
     left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
 }
 
 #error_explanation {
@@ -78,13 +114,3 @@ a:hover {
     color: rgb(238, 74, 99);
     font-weight: bold;
 }
-
-p {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 20px;
-}
-
-body {
-    font-family: 'Playfair Display', serif;
-}
-

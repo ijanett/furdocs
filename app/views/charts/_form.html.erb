@@ -2,21 +2,29 @@
 
 <%= form_for @chart do |f| %>
     <%= f.hidden_field :vet_id %>
-    <%= f.label "Patient:"%>
-    <%= f.select :pet_id, grouped_pets_for_select(params[:pet_id]), {:prompt => "Please choose a patient"} %>
-    <br><br>
-    <%= f.label "Check all that apply:"%>
-    <br>
-    <%= f.label :vaccination %>
-    <%= f.check_box :vaccination %>
-    <%= f.label :medication %>
-    <%= f.check_box :medication %>
-    <%= f.label :diagnosis %>
-    <%= f.check_box :diagnosis %>
-    <br><br>
-    <%= f.label "Notes:" %>
-    <br>
-    <%= f.text_area :note %>
-    <br>
-    <%= f.submit submit_text %>
+    <div class="form-group">
+        <%= f.select :pet_id, grouped_pets_for_select(params[:pet_id]), {:prompt => "Please choose a patient"}, class: "form-control" %>
+    </div>
+    <%= f.label "Check all that apply:", class: "form-control-label"%>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <div class="form-check">
+                <%= f.check_box :vaccination, class: "form-check-input" %>
+                <%= f.label :vaccination, class: "form-check-label" %>
+                <br>
+                <%= f.check_box :medication, class: "form-check-input" %>
+                <%= f.label :medication, class: "form-check-label" %>
+                <br>
+                <%= f.check_box :diagnosis, class: "form-check-input" %>
+                <%= f.label :diagnosis, class: "form-check-label" %>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <%= f.label "Notes:" %>
+    <%= f.text_area :note, class: "form-control" %>
+    </div>
+    <div class="actions">
+        <%= f.submit submit_text, class: "btn btn-info" %>
+    </div>
 <% end %>

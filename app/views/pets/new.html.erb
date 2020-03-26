@@ -4,31 +4,50 @@
 
 <%= form_for @pet do |f| %>
     
-    <%= f.label "Name:" %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label "Color:" %>
-    <%= f.text_field :color %>
-    <br>
-    <%= f.label "Breed:" %>
-    <%= f.text_field :breed %>
-    <br>
-    <%= f.label "Date of Birth:" %>
-    <%= f.date_field :dob, placeholder: "yyyy/mm/dd" %>
-    <br>
-    <%= f.label "Species:" %>
-    <%= f.label "Canine" %>
-    <%= f.radio_button :species, "canine" %>
-    <%= f.label "Feline" %>
-    <%= f.radio_button :species, "feline" %>
-    <br>
-    <%= f.label "Gender:" %>
-    <%= f.label "Male" %>
-    <%= f.radio_button :gender, "male" %>
-    <%= f.label "Female" %>
-    <%= f.radio_button :gender, "female" %>
+    <div class="form-group">
+        <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+    </div>
+    <div class="form-group">
+        <%= f.text_field :color, class: "form-control", placeholder: "Color" %>
+    </div>
+    <div class="form-group">
+        <%= f.text_field :breed, class: "form-control", placeholder: "Breed" %>
+    </div>
+    <div class="form-group">
+        <%= f.label "Birthdate:"%>
+        <%= f.date_field :dob, class: "form-control", placeholder: "yyyy/mm/dd" %>
+    </div>
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Species:</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                <%= f.radio_button :species, "canine", class: "form-check-input" %>
+                <%= f.label "Canine", class: "form-check-label" %>
+                <br>
+                <%= f.radio_button :species, "feline", class: "form-check-input" %>
+                <%= f.label "Feline", class: "form-check-label" %>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Gender:</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                <%= f.radio_button :gender, "male", class: "form-check-input" %>
+                <%= f.label "Male", class: "form-check-label" %>
+                <br>
+                <%= f.radio_button :gender, "female", class: "form-check-input" %>
+                <%= f.label "Female", class: "form-check-label" %>
+                </div>
+            </div>
+        </div>
+    <fieldset>
 
     <%= f.hidden_field :owner_id %>
     <br><br>
-    <%= f.submit "Submit" %>
+    <div class="actions">
+        <%= f.submit "Submit", class: "btn btn-info" %>
+    </div>
 <% end %>

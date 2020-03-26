@@ -1,4 +1,4 @@
-<p><strong><%= @appointment.pet.name %>'s appointment details:</strong></p>
+<h3><%= @appointment.pet.name %>'s Appointment Confirmation</h3>
 <p><strong>Date: </strong> <%= appt_date(@appointment) %></p>
 <p><strong>Time: </strong> <%= appt_time(@appointment) %></p>
 <% if current_owner %>
@@ -6,10 +6,10 @@
     <p><strong>Location: </strong>
     <%= link_to vet_clinic(@appointment).name, clinic_path(vet_clinic(@appointment)) %></p>
     <br>
-    Back to <%= link_to @appointment.pet.name, owner_pet_path(@appointment.pet.owner, @appointment.pet) %>'s profile page.
+    <p>Back to <%= link_to @appointment.pet.name, owner_pet_path(@appointment.pet.owner, @appointment.pet) %>'s profile page.</p>
 <% end %>
 <% if is_vet %>
-    <%= link_to "Edit", edit_vet_appointment_path(@appointment.vet, @appointment) %>
+    <%= link_to "Edit", edit_vet_appointment_path(@appointment.vet, @appointment), class: "vet-form" %>
     <br>
-    <%= link_to "All Appointments", vet_path(@appointment.vet) %>
+    <%= link_to "All Appointments", vet_path(@appointment.vet), class: "vet-form" %>
 <% end %>

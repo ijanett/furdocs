@@ -20,9 +20,9 @@
 </table>
 
 <% if is_vet %>
-  <%= link_to "Edit Chart", edit_vet_chart_path(@chart.vet, @chart) %>
+  <%= link_to "Edit Chart", edit_vet_chart_path(@chart.vet, @chart), class: "vet-form" %>
   <br>
-  <%= link_to "Delete", @chart, method: :delete, data: {confirm: "Are you sure you want to delete this record?"} %>
+  <%= link_to "Delete", @chart, method: :delete, data: {confirm: "Are you sure you want to delete this record?"}, class: "vet-form" %>
 <% else %>
     <p><strong>Make a new <%= link_to "appointment", new_pet_appointment_path(@chart.pet) %> </strong></p>
 <% end %>
