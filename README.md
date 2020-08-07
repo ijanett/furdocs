@@ -1,7 +1,5 @@
 # FurDocs
 
-![FurDocs logo](https://drive.google.com/uc?export=view&id=1Zx0K2hetfyTpV0SJbrvLBZM_ejaD_VAV)
-
 ![FurDocs](https://drive.google.com/uc?export=view&id=1adiOLJSd_6AtQ3KxCbc5hWGJci3i0q1p)
 
 FurDocs is a CMS web app built using Ruby on Rails. FurDocs is an app for vets and pet owners that helps manage and track pet medical records.
