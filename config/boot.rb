@@ -5,12 +5,10 @@ require 'action_dispatch/middleware/static'
 module ActionDispatch
   class Static
     prepend Module.new {
-      def initialize(*args, **kwargs)
-        if kwargs.empty?
-            super(*args)
-        else
-            super(*args, **kwargs)
-        end
+      extend RubyVM::AbstractSyntaxTree rescue nil #fallback
+
+      ruby2_keywords def initialize(*args)
+        super(*args)
       end
     }
   end
