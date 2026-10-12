@@ -5,8 +5,12 @@ require 'action_dispatch/middleware/static'
 module ActionDispatch
   class Static
     prepend Module.new {
-      def initialize(app, path, index: 'index', headers: {})
-        super(app, path, index: index, headers: headers)
+      def initialize(*args, **kwargs)
+        if kwargs.empty?
+            super(*args)
+        else
+            super(*args, **kwargs)
+        end
       end
     }
   end
