@@ -76,6 +76,15 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
+  # config/environments/production.rb patch for Ruby 3 keyword argument compatibility
+  if ActiveSupport::Logger.instance_methods.include?(:initialize)
+    ActiveSupport::Logger.prepend(Module.new do
+      def initialize(*args, **kwargs)
+        super(*args, **kwargs.empty? ? {} : kwargs)
+      end
+    end)
+  end
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
