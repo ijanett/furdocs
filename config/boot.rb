@@ -31,12 +31,23 @@ if defined?(Psych) && Psych.respond_to?(:safe_load)
   end
 end
 
-# Global Ruby 3 keyword argument fallback wrapper patch
-if RubyVM.respond_to?(:allow_non_keyword_arguments=)
-  RubyVM.allow_non_keyword_arguments = true
-elsif !defined?(ruby2_keywords)
-    class Module
-        def ruby2_keywords(*) end
+# Explicit patch for Rails 5.2 ActiveRecord Type Registry initialization on Ruby 3
+require 'active_record'
+require 'active_record/type'
+require 'active_record/type/adapter_specific_registry'
+module ActiveRecord
+    module Type
+        class AdapterSpecificRegistry
+            prepend Module.new {
+                def add_modifier(*args, **kwargs)
+                    if kwargs.empty?
+                        super(*args)
+                    else
+                        super(*args, **kwargs)
+                    end
+                end
+            }
+        end
     end
 end
 
