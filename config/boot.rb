@@ -4,13 +4,12 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
 require 'action_dispatch/middleware/static'
 module ActionDispatch
   class Static
-    prepend Module.new {
-      extend RubyVM::AbstractSyntaxTree rescue nil #fallback
-
-      ruby2_keywords def initialize(*args)
-        super(*args)
-      end
-    }
+    def initialize(app, path, options = {})
+      @app = app
+      index = options[:index] || 'index'
+      headers = options[:headers] || {}
+      @file_handler = FileHandler.new(path, index: index, headers: headers)
+    end
   end
 end
 
