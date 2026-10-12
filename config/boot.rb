@@ -31,5 +31,23 @@ if defined?(Psych) && Psych.respond_to?(:safe_load)
   end
 end
 
+# Patch for Rails 5.2 ActiveRecord connection initialization on Ruby 3
+require 'active_record/type/adapter_specific_registry'
+module ActiveRecord
+  module Type
+    class AdapterSpecificRegistry
+      prepend Module.new {
+        def add_modifier(*args, **kwargs)
+          if kwargs.empty?
+            super(*args)
+          else
+            super(*args, **kwargs)
+          end
+        end
+      }
+    end
+  end
+end
+
 require 'bundler/setup' # Set up gems listed in the Gemfile.
 require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
