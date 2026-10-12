@@ -13,5 +13,23 @@ module ActionDispatch
   end
 end
 
+# Patch for Ruby 3 Psych YAML database alias parsing failure
+require 'yaml'
+if defined?(Psych) && Psych.respond_to?(:safe_load)
+  module Psych
+    class << self
+      alias_method :orig_safe_load, :safe_load
+      def safe_load(yaml, *args, **kwargs)
+        if kwargs.empty? && args.empty?
+          orig_safe_load(yaml, aliases: true)
+        else
+          kwargs[:aliases] = true
+          orig_safe_load(yaml, *args, **kwargs)
+        end
+      end
+    end
+  end
+end
+
 require 'bundler/setup' # Set up gems listed in the Gemfile.
 require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
