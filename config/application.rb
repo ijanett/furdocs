@@ -19,17 +19,3 @@ module FurDocs
     # the framework and any gems in your application.
   end
 end
-
-# Safe hook patch for Rails 5.2 ActiveRecord Type Registry initialization on Ruby 3
-ActiveSupport.on_load(:active_record) do
-  require 'active_record/type/adapter_specific_registry'
-  ActiveRecord::Type::AdapterSpecificRegistry.prepend(Module.new {
-    def add_modifier(*args, **kwargs)
-      if kwargs.empty?
-        super(*args)
-      else
-        super(*args, **kwargs)
-      end
-    end
-  })
-end
