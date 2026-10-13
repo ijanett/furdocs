@@ -35,4 +35,43 @@ ActiveSupport.on_load(:active_record) do
       super(**(options || {}).merge(kwargs))
     end
   end)
+
+  # Fix keyword argument forwarding in the Rails 5.2 PostgreSQL adapter
+  require 'active_record/connection_adapters/postgresql/schema_statements'
+
+  ActiveRecord::ConnectionAdapters::PostgreSQL::SchemaStatements.prepend(
+    Module.new do
+      private
+
+      def create_table_definition(*args, **kwargs)
+        ActiveRecord::ConnectionAdapters::PostgreSQL::TableDefinition.new(
+          *args, **kwargs
+        )
+      end
+    end
+  )
+
+  # Ruby 3 compatibility for Rails 5.2 column definitions
+  require 'active_record/connection_adapters/abstract/schema_definitions'
+
+  ActiveRecord::ConnectionAdapters::TableDefinition.prepend(
+    Module.new do
+      def new_column_definition(name, type, options = nil, **kwargs)
+        super(name, type, **(options || {}).merge(kwargs))
+      end
+    end
+  )
+
+  # Ruby 3 keyword-argument compatibility for Rails 5.2
+  require 'active_record/connection_adapters/abstract/schema_creation'
+
+  ActiveRecord::ConnectionAdapters::AbstractAdapter::SchemaCreation.prepend(
+    Module.new do
+      private
+
+      def type_to_sql(type, options = nil, **kwargs)
+        @conn.type_to_sql(type, **(options || {}).merge(kwargs))
+      end
+    end
+  )
 end
