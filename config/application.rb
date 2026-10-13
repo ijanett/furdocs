@@ -20,20 +20,16 @@ module FurDocs
   end
 end
 
-# Add this block at the very end of your file
-require 'active_record/type/adapter_specific_registry'
-module ActiveRecord
-  module Type
-    class AdapterSpecificRegistry
-      prepend Module.new {
-        def add_modifier(*args, **kwargs)
-          if kwargs.empty?
-            super(*args)
-          else
-            super(*args, **kwargs)
-          end
-        end
-      }
+# Safe hook patch for Rails 5.2 ActiveRecord Type Registry initialization on Ruby 3
+ActiveSupport.on_load(:active_record) do
+  require 'active_record/type/adapter_specific_registry'
+  ActiveRecord::Type::AdapterSpecificRegistry.prepend(Module.new {
+    def add_modifier(*args, **kwargs)
+      if kwargs.empty?
+        super(*args)
+      else
+        super(*args, **kwargs)
+      end
     end
-  end
+  })
 end
