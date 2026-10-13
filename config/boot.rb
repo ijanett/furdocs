@@ -18,9 +18,13 @@ require 'json'
 module JSON
   class << self
     alias_method :orig_parse, :parse
-    def parse(source, opts = {})
-      opts.delete(:create_additions) if opts.is_value? rescue opts.delete(:create_additions)
-      orig_parse(source, opts)
+    def parse(source, *args, **kwargs)
+      kwargs.delete(:create_additions)
+      if kwargs.empty?
+        orig_parse(source, *args)
+      else
+        orig_parse(source, *args, **kwargs)
+      end
     end
   end
 end
