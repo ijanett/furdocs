@@ -20,8 +20,18 @@ module FurDocs
   end
 end
 
+# Temporary compatibility workaround for Rails 5.2
+# and Ruby 3 keyword argument forwarding.
 ActiveSupport.on_load(:active_record) do
-  ActiveRecord::Type.define_singleton_method(:add_modifier) do |options, klass, **args|
-    registry.add_modifier(options, klass, **args)
+  ActiveRecord::Type.define_singleton_method(:add_modifier) do |options, klass, **kwargs|
+    registry.add_modifier(options, klass, **kwargs)
+  end
+
+  # Fix Integer type initialization under Ruby 3
+  ActiveModel::Type::Integer.class_eval do
+    def initialize(**kwargs)
+      super(**kwargs)
+      @range = min_value...max_value
+    end
   end
 end
