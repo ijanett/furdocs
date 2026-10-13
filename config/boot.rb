@@ -13,5 +13,17 @@ module ActionDispatch
   end
 end
 
+# 2. Patch for Sprockets vs JSON 3.x create_additions keyword error
+require 'json'
+module JSON
+  class << self
+    alias_method :orig_parse, :parse
+    def parse(source, opts = {})
+      opts.delete(:create_additions) if opts.is_value? rescue opts.delete(:create_additions)
+      orig_parse(source, opts)
+    end
+  end
+end
+
 require 'bundler/setup' # Set up gems listed in the Gemfile.
 require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
