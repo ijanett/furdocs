@@ -22,9 +22,9 @@ end
 
 ActiveSupport.on_load(:active_record) do
   require 'active_record/type/adapter_specific_registry'
-  ActiveRecord::Type::AdapterSpecificRegistry.class_eval do
+  ActiveRecord::Type::AdapterSpecificRegistry.prepend(Module.new {
     ruby2_keywords def add_modifier(*args)
       super(*args)
     end
-  end
+  })
 end
