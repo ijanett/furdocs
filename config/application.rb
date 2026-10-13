@@ -27,11 +27,12 @@ ActiveSupport.on_load(:active_record) do
     registry.add_modifier(options, klass, **kwargs)
   end
 
-  # Fix Integer type initialization under Ruby 3
-  ActiveModel::Type::Integer.class_eval do
-    def initialize(**kwargs)
-      super(**kwargs)
-      @range = min_value...max_value
+  # Handle Rails 5.2 initializers that pass keyword arguments as a positional hash in Ruby 3.
+  require 'active_model/type/value'
+
+  ActiveModel::Type::Value.prepend(Module.new do
+    def initialize(options = nil, **kwargs)
+      super(**(options || {}).merge(kwargs))
     end
-  end
+  end)
 end
