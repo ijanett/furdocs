@@ -1,7 +1,13 @@
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
 
-# Patch for Rails 5.2 / Ruby 3 compatibility error in static middleware
+require 'bundler/setup' # Set up gems listed in the Gemfile.
+require 'logger' # Load Logger before Rails/Active Support
+require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
+
+# Temporary compatibility patch:
+# Originally added for Rails 5.2 / Ruby 3 static middleware
 require 'action_dispatch/middleware/static'
+
 module ActionDispatch
   class Static
     def initialize(app, path, options = {})
@@ -13,8 +19,10 @@ module ActionDispatch
   end
 end
 
-# 2. Patch for Sprockets vs JSON 3.x create_additions keyword error
+# Temporary compatibility patch:
+# Originally added for Sprockets / JSON keyword-argument handling
 require 'json'
+
 module JSON
   class << self
     alias_method :orig_parse, :parse
@@ -28,6 +36,3 @@ module JSON
     end
   end
 end
-
-require 'bundler/setup' # Set up gems listed in the Gemfile.
-require 'bootsnap/setup' # Speed up boot time by caching expensive operations.
