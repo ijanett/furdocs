@@ -19,3 +19,21 @@ module FurDocs
     # the framework and any gems in your application.
   end
 end
+
+# Add this block at the very end of your file
+require 'active_record/type/adapter_specific_registry'
+module ActiveRecord
+  module Type
+    class AdapterSpecificRegistry
+      prepend Module.new {
+        def add_modifier(*args, **kwargs)
+          if kwargs.empty?
+            super(*args)
+          else
+            super(*args, **kwargs)
+          end
+        end
+      }
+    end
+  end
+end
