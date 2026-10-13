@@ -21,10 +21,7 @@ module FurDocs
 end
 
 ActiveSupport.on_load(:active_record) do
-  require 'active_record/type/adapter_specific_registry'
-  ActiveRecord::Type::AdapterSpecificRegistry.prepend(Module.new {
-    ruby2_keywords def add_modifier(*args)
-      super(*args)
-    end
-  })
+  ActiveRecord::Type.define_singleton_method(:add_modifier) do |options, klass, **args|
+    registry.add_modifier(options, klass, **args)
+  end
 end
