@@ -18,21 +18,3 @@ module ActionDispatch
     end
   end
 end
-
-# Temporary compatibility patch:
-# Originally added for Sprockets / JSON keyword-argument handling
-require 'json'
-
-module JSON
-  class << self
-    alias_method :orig_parse, :parse
-    def parse(source, *args, **kwargs)
-      kwargs.delete(:create_additions)
-      if kwargs.empty?
-        orig_parse(source, *args)
-      else
-        orig_parse(source, *args, **kwargs)
-      end
-    end
-  end
-end
