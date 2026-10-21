@@ -27,7 +27,10 @@
                   <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/auth/github">Login with GitHub</a>
+                  <%= button_to 'Login with GitHub',
+                    '/auth/github',
+                    method: :post,
+                    class: 'nav-link btn' %>
               </li>
           <% else %>
               <li class="nav-item">
